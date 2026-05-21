@@ -874,7 +874,7 @@ function AppContent() {
               {/* Trusted by section */}
               <section className="bg-brand-black select-none border-b border-brand-white/10">
                 <div className="max-w-7xl mx-auto text-center py-[32px]">
-                  <p className="text-[10px] uppercase tracking-[0.3em] text-white/30 font-mono mb-6">
+                  <p className="text-[10px] uppercase tracking-[0.3em] text-[#b2b1b1] font-mono mb-6">
                     TRUSTED BY
                   </p>
                   <div className="flex gap-[48px] justify-center items-center flex-wrap">
@@ -884,7 +884,7 @@ function AppContent() {
                       { filename: "rbc-logo.png", alt: "RBC" },
                       { filename: "srf-logo.svg.png", alt: "SRF" },
                       { filename: "swisscom-logo.png", alt: "Swisscom" },
-                      { filename: "TEDx Zurich Logo.svg", alt: "TEDx Zurich" },
+                      { filename: "TEDx_Zurich_Logo.png", alt: "TEDx Zurich" },
                       { filename: "ZHdK-Logo.png", alt: "ZHdK" },
                       { filename: "ZZZ-Logo.webp", alt: "ZZZ" }
                     ].map((logo, index) => (
@@ -893,7 +893,7 @@ function AppContent() {
                         folder="company-logos" 
                         filename={logo.filename} 
                         alt={logo.alt} 
-                        className="trusted-logo max-h-[32px] w-auto opacity-50 grayscale brightness-[0.85] hover:opacity-100 transition-all duration-300 pointer-events-auto" 
+                        className="trusted-logo max-h-[41.6px] w-auto opacity-50 grayscale brightness-[0.85] hover:opacity-100 transition-all duration-300 pointer-events-auto" 
                       />
                     ))}
                   </div>
@@ -1040,7 +1040,7 @@ function AppContent() {
               {/* Partners Logos Section */}
               <section className="bg-brand-black select-none border-b-4 border-brand-white">
                 <div className="max-w-7xl mx-auto text-center py-[32px]">
-                  <p className="text-[10px] uppercase tracking-[0.3em] text-white/30 font-mono mb-6">
+                  <p className="text-[10px] uppercase tracking-[0.3em] text-[#b2b1b1] font-mono mb-6">
                     TRUSTED BY
                   </p>
                   <div className="flex gap-[48px] justify-center items-center flex-wrap">
@@ -1050,7 +1050,7 @@ function AppContent() {
                       { filename: "rbc-logo.png", alt: "RBC" },
                       { filename: "srf-logo.svg.png", alt: "SRF" },
                       { filename: "swisscom-logo.png", alt: "Swisscom" },
-                      { filename: "TEDx Zurich Logo.svg", alt: "TEDx Zurich" },
+                      { filename: "TEDx_Zurich_Logo.png", alt: "TEDx Zurich" },
                       { filename: "ZHdK-Logo.png", alt: "ZHdK" },
                       { filename: "ZZZ-Logo.webp", alt: "ZZZ" }
                     ].map((logo, index) => (
@@ -1059,7 +1059,7 @@ function AppContent() {
                         folder="company-logos" 
                         filename={logo.filename} 
                         alt={logo.alt} 
-                        className="trusted-logo max-h-[32px] w-auto opacity-50 grayscale brightness-[0.85] hover:opacity-100 transition-all duration-300 pointer-events-auto" 
+                        className="trusted-logo max-h-[41.6px] w-auto opacity-50 grayscale brightness-[0.85] hover:opacity-100 transition-all duration-300 pointer-events-auto" 
                       />
                     ))}
                   </div>
