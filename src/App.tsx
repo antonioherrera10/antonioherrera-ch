@@ -8,6 +8,7 @@ import { Wand2, Layers, Heart, Menu, X, Globe, User, MessageSquareOff, Briefcase
 import { useState, useEffect, useCallback } from "react";
 import DesignView from "./components/DesignView";
 import MuxPlayer from "@mux/mux-player-react";
+import { BrowserRouter, Routes, Route, Link, useLocation, useNavigate } from "react-router-dom";
 
 type Language = "EN" | "DE" | "ES";
 
@@ -516,19 +517,21 @@ const Ticker = ({ text }: { text: string }) => {
   );
 };
 
-export default function App() {
-  const [view, setView] = useState<"home" | "design" | "music">("home");
+function AppContent() {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const pathname = location.pathname;
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [lang, setLang] = useState<Language>("EN");
   const [isExpanded, setIsExpanded] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isLangMenuOpen, setIsLangMenuOpen] = useState(false);
 
-  const handleViewChange = (newView: "home" | "design" | "music") => {
-    setView(newView);
-    setIsMenuOpen(false);
+  // Auto-scroll on route changes
+  useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
-  };
+  }, [pathname]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -551,32 +554,32 @@ export default function App() {
       <header className="fixed top-0 left-0 right-0 z-50 bg-brand-black/80 backdrop-blur-md">
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between relative">
           <div className="flex items-center gap-4">
-            <button
-              onClick={() => handleViewChange("home")}
+            <Link
+              to="/"
               className="text-xl font-bold tracking-tighter uppercase cursor-pointer focus:outline-none focus:ring-0 text-left hover:text-brand-grey transition-colors"
             >
               ANTONIO HERRERA
-            </button>
+            </Link>
           </div>
 
           {/* Centered Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
-            <button
-              onClick={() => handleViewChange("design")}
+            <Link
+              to="/design"
               className={`text-xs font-bold tracking-widest uppercase transition-colors cursor-pointer focus:outline-none focus:ring-0 ${
-                view === "design" ? "text-brand-white font-semibold" : "text-brand-grey hover:text-brand-white"
+                pathname === "/design" ? "text-brand-white font-semibold" : "text-brand-grey hover:text-brand-white"
               }`}
             >
               Design
-            </button>
-            <button
-              onClick={() => handleViewChange("music")}
+            </Link>
+            <Link
+              to="/music"
               className={`text-xs font-bold tracking-widest uppercase transition-colors cursor-pointer focus:outline-none focus:ring-0 ${
-                view === "music" ? "text-brand-white font-semibold" : "text-brand-grey hover:text-brand-white"
+                pathname === "/music" ? "text-brand-white font-semibold" : "text-brand-grey hover:text-brand-white"
               }`}
             >
               Music
-            </button>
+            </Link>
             <a href="https://antonioherrera.shop/" target="_blank" rel="noopener noreferrer" className="text-xs font-bold tracking-widest uppercase text-brand-grey hover:text-brand-white transition-colors">Boutique</a>
           </nav>
           
@@ -697,22 +700,24 @@ export default function App() {
           >
             {/* Middle Nav items for Mobile */}
             <div className="flex flex-col items-center gap-4 py-4 border-b border-brand-white/10">
-              <button
-                onClick={() => handleViewChange("design")}
+              <Link
+                to="/design"
+                onClick={() => setIsMenuOpen(false)}
                 className={`text-sm font-bold tracking-widest uppercase transition-colors cursor-pointer focus:outline-none focus:ring-0 ${
-                  view === "design" ? "text-brand-white font-semibold" : "text-brand-grey"
+                  pathname === "/design" ? "text-brand-white font-semibold" : "text-brand-grey"
                 }`}
               >
                 Design
-              </button>
-              <button
-                onClick={() => handleViewChange("music")}
+              </Link>
+              <Link
+                to="/music"
+                onClick={() => setIsMenuOpen(false)}
                 className={`text-sm font-bold tracking-widest uppercase transition-colors cursor-pointer focus:outline-none focus:ring-0 ${
-                  view === "music" ? "text-brand-white font-semibold" : "text-brand-grey"
+                  pathname === "/music" ? "text-brand-white font-semibold" : "text-brand-grey"
                 }`}
               >
                 Music
-              </button>
+              </Link>
               <a href="https://antonioherrera.shop/" target="_blank" rel="noopener noreferrer" onClick={() => setIsMenuOpen(false)} className="text-sm font-bold tracking-widest uppercase text-brand-grey hover:text-brand-white transition-colors">Boutique</a>
             </div>
 
@@ -741,9 +746,10 @@ export default function App() {
 
       <main>
         <AnimatePresence mode="wait">
-          {view === "home" ? (
-            <motion.div
-              key="home-view"
+          <Routes>
+            <Route path="/" element={
+              <motion.div
+                key="home-view"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -894,7 +900,8 @@ export default function App() {
                 </div>
               </section>
             </motion.div>
-          ) : view === "music" ? (
+          } />
+          <Route path="/music" element={
             <motion.div
               key="music-view"
               initial={{ opacity: 0 }}
@@ -1141,14 +1148,16 @@ export default function App() {
                 </div>
               </section>
             </motion.div>
-          ) : (
+          } />
+          <Route path="/design" element={
             <DesignView
               key="design-view"
               lang={lang}
               t={t}
-              onBackToHome={() => handleViewChange("home")}
+              onBackToHome={() => navigate("/")}
             />
-          )}
+          } />
+        </Routes>
         </AnimatePresence>
       </main>
 
@@ -1277,5 +1286,13 @@ export default function App() {
         </div>
       </footer>
     </div>
+  );
+}
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <AppContent />
+    </BrowserRouter>
   );
 }
