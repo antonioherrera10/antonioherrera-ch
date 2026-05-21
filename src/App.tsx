@@ -7,7 +7,8 @@ import { motion, AnimatePresence } from "motion/react";
 import { Wand2, Layers, Heart, Menu, X, Globe, User, MessageSquareOff, Briefcase, Maximize, Compass, Clock, Star, MapPin, MousePointerClick, FileText, Bell, Download, Instagram, Music, Youtube, Quote } from "lucide-react";
 import { useState, useEffect, useCallback } from "react";
 import DesignView from "./components/DesignView";
-import MuxPlayer from "@mux/mux-player-react";
+import CloudinaryImage from "./components/CloudinaryImage";
+import MuxVideo from "./components/MuxVideo";
 import { BrowserRouter, Routes, Route, Link, useLocation, useNavigate } from "react-router-dom";
 
 type Language = "EN" | "DE" | "ES";
@@ -794,11 +795,13 @@ function AppContent() {
                     }}
                     className="w-full h-full transform-gpu"
                   >
-                    <img 
-                      src="/src/assets/images/antonio_hero_bg_1779317466947.png" 
+                    <CloudinaryImage 
+                      folder="hero"
+                      filename="antonio_hero_bg_1779317466947.png"
+                      src="/src/assets/images/antonio_hero_bg_1779317466947.png"
                       alt="Antonio Herrera Stage Performance" 
                       className="w-full h-full object-cover object-center filter brightness-[0.35] contrast-[1.1] saturate-[0.85]"
-                      referrerPolicy="no-referrer"
+                      eager={true}
                     />
                   </motion.div>
                   <div className="absolute inset-0 bg-gradient-to-t from-brand-black via-brand-black/20 to-brand-black/60 z-10" />
@@ -913,11 +916,13 @@ function AppContent() {
               {/* Music Hero Section */}
               <section className="relative h-screen flex items-center justify-center overflow-hidden bg-brand-black">
                 <div className="absolute inset-0 z-0">
-                  <img 
-                    src="/src/assets/images/antonio_hero_bg_1779317466947.png" 
+                  <CloudinaryImage 
+                    folder="music"
+                    filename="antonio_hero_bg_1779317466947.png"
+                    src="/src/assets/images/antonio_hero_bg_1779317466947.png"
                     alt="Antonio Herrera Music Performance" 
                     className="w-full h-full object-cover object-center filter brightness-[0.45] contrast-[1.05]"
-                    referrerPolicy="no-referrer"
+                    eager={true}
                   />
                   <div className="absolute inset-0 bg-gradient-to-b from-brand-black/40 via-transparent to-brand-black/95 z-10" />
                 </div>
@@ -994,11 +999,9 @@ function AppContent() {
                   viewport={{ once: true }}
                   className="w-full aspect-video bg-brand-black"
                 >
-                  <MuxPlayer
+                  <MuxVideo
                     playbackId="zC4Dxc015iYBWPPtB92XqYXm5yrYKFYElE01HM6sPuKeA"
-                    metadataVideoTitle="Showreel"
-                    style={{ aspectRatio: "16/9", width: "100%", height: "100%" }}
-                    accentColor="#ff3333"
+                    title="Showreel"
                   />
                 </motion.div>
               </section>
