@@ -796,12 +796,11 @@ function AppContent() {
                     className="w-full h-full transform-gpu"
                   >
                     <CloudinaryImage 
-                      folder="hero"
-                      filename="antonio_hero_bg_1779317466947.png"
-                      src="/src/assets/images/antonio_hero_bg_1779317466947.png"
+                      folder="hero" 
+                      filename="antonio-herrera-hero-1.jpg" 
                       alt="Antonio Herrera Stage Performance" 
-                      className="w-full h-full object-cover object-center filter brightness-[0.35] contrast-[1.1] saturate-[0.85]"
-                      eager={true}
+                      eager 
+                      className="w-full h-full object-cover object-center filter brightness-[0.35] contrast-[1.1] saturate-[0.85]" 
                     />
                   </motion.div>
                   <div className="absolute inset-0 bg-gradient-to-t from-brand-black via-brand-black/20 to-brand-black/60 z-10" />
@@ -869,6 +868,35 @@ function AppContent() {
                 {/* Ticker Bar */}
                 <div className="absolute bottom-0 left-0 right-0 z-30">
                   <Ticker text={t.tickerText} />
+                </div>
+              </section>
+
+              {/* Trusted by section */}
+              <section className="bg-brand-black select-none border-b border-brand-white/10">
+                <div className="max-w-7xl mx-auto text-center py-[32px]">
+                  <p className="text-[10px] uppercase tracking-[0.3em] text-white/30 font-mono mb-6">
+                    TRUSTED BY
+                  </p>
+                  <div className="flex gap-[48px] justify-center items-center flex-wrap">
+                    {[
+                      { filename: "FIFA-logo.png", alt: "FIFA" },
+                      { filename: "ikea-logo.png", alt: "IKEA" },
+                      { filename: "rbc-logo.png", alt: "RBC" },
+                      { filename: "srf-logo.svg.png", alt: "SRF" },
+                      { filename: "swisscom-logo.png", alt: "Swisscom" },
+                      { filename: "TEDx Zurich Logo.svg", alt: "TEDx Zurich" },
+                      { filename: "ZHdK-Logo.png", alt: "ZHdK" },
+                      { filename: "ZZZ-Logo.webp", alt: "ZZZ" }
+                    ].map((logo, index) => (
+                      <CloudinaryImage 
+                        key={index}
+                        folder="company-logos" 
+                        filename={logo.filename} 
+                        alt={logo.alt} 
+                        className="trusted-logo max-h-[32px] w-auto opacity-50 grayscale brightness-[0.85] hover:opacity-100 transition-all duration-300 pointer-events-auto" 
+                      />
+                    ))}
+                  </div>
                 </div>
               </section>
        
@@ -1010,62 +1038,30 @@ function AppContent() {
               <div className="h-2 bg-brand-white w-full" />
 
               {/* Partners Logos Section */}
-              <section className="py-24 bg-brand-black border-b-4 border-brand-white text-brand-white">
-                <div className="max-w-7xl mx-auto px-6 text-center">
-                  <motion.h3
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    className="text-xs uppercase tracking-[0.2em] mb-12 text-brand-grey font-mono"
-                  >
-                    {t.partnersTitle}
-                  </motion.h3>
-
-                  <div className="flex flex-wrap justify-center items-center gap-12 md:gap-24 opacity-60 hover:opacity-100 transition-opacity duration-500">
-                    {/* FIFA Logo */}
-                    <motion.div
-                      whileHover={{ scale: 1.05 }}
-                      className="text-brand-white hover:text-[#326295] transition-colors duration-300 pointer-events-auto"
-                    >
-                      <svg viewBox="0 0 110 45" className="h-10 text-current fill-current shrink-0" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M10 5h22v6H18v8h12v6H18v15H10V5z" />
-                        <path d="M37 5h8v35h-8V5z" />
-                        <path d="M50 5h22v6H58v8h12v6H58v15H50V5z" />
-                        <path d="M88 5h6l12 35h-8.5l-2.5-8.5h-11l-2.5 8.5H73L88 5zm6 11.5L91 26h6l-3-9.5z" />
-                        <path d="M8 43c30 4 75 4 110-3-20 2-60 3-110 3z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                      </svg>
-                    </motion.div>
-
-                    {/* RBC (Royal Bank) Logo */}
-                    <motion.div
-                      whileHover={{ scale: 1.05 }}
-                      className="shrink-0"
-                    >
-                      <svg viewBox="0 0 280 55" className="h-10 text-brand-white" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect x="2" y="2" width="48" height="51" rx="8" fill="#005DAA" />
-                        <path d="M12 28c0-6 4-10 10-10l3 2-2 2h3l1 3-2 1h3v3s-3 1-5 1c-5 0-10-4-10-12z" fill="#FFD200" />
-                        <path d="M30 18l3 3-1 2-2-1-2 2-1-3 3-3zM25 22c1 0 2 .5 2 1.5s-.5 1.5-2 1.5-2-.5-2-1.5.5-1.5 2-1.5z" fill="#FFD200" />
-                        <circle cx="38" cy="30" r="6" fill="#FFD200" opacity="0.8" />
-                        <path d="M10 40c4-4 12-4 16-2s12 1 16-3c-1 4-6 6-12 5s-12-1-16 0z" fill="#FFD200" />
-                        <line x1="62" y1="8" x2="62" y2="47" stroke="currentColor" strokeWidth="2" strokeLinecap="round" className="opacity-30 text-brand-white" />
-                        <text x="76" y="36" className="fill-current text-brand-white font-bold" style={{ fontFamily: "Inter, sans-serif", fontSize: "20px" }}>Royal Bank</text>
-                      </svg>
-                    </motion.div>
-
-                    {/* SRF Logo */}
-                    <motion.div
-                      whileHover={{ scale: 1.05 }}
-                      className="shrink-0"
-                    >
-                      <svg viewBox="0 0 260 55" className="h-10 text-brand-white" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect x="2" y="2" width="85" height="51" rx="8" fill="#C0001F" />
-                        <path d="M22 23.5c0-3.5 3-4.5 5.5-4.5 3 0 5 1.5 5 4H27.8c0-1-.8-1.5-2.2-1.5-1.5 0-2 .6-2 1.5s.5 1.2 2 1.8l3.2 1.2c4 1.5 5.2 3.2 5.2 5.8 0 4-3.2 5.2-6.2 5.2-3.5 0-6-1.8-6-4.5h4.8c0 1 1 1.8 2.3 1.8 1.4 0 2.2-.6 2.2-1.8 0-.8-.5-1.2-2.3-1.8l-2.5-1c-4-1.5-5.3-3-5.3-5.8z" fill="#FFFFFF" />
-                        <path d="M43 19.5h8.5c4 0 6 1.8 6 4.5s-2 3.8-4.5 4.2l5 8.3h-5.2l-4.5-8h-2V36.5H43v-17zm3.3 2.8v3.2h5c1.8 0 2.8-.8 2.8-1.6s-1-1.6-2.8-1.6h-5z" fill="#FFFFFF" />
-                        <path d="M64 19.5h11v2.8H67.3v5h6v2.8h-6v6.4H64v-17z" fill="#FFFFFF" />
-                        <text x="98" y="27" className="fill-current text-brand-white font-medium" style={{ fontFamily: "Inter, sans-serif", fontSize: "16px" }}>Schweizer Radio</text>
-                        <text x="98" y="44" className="fill-current text-brand-white font-medium" style={{ fontFamily: "Inter, sans-serif", fontSize: "16px" }}>und Fernsehen</text>
-                      </svg>
-                    </motion.div>
+              <section className="bg-brand-black select-none border-b-4 border-brand-white">
+                <div className="max-w-7xl mx-auto text-center py-[32px]">
+                  <p className="text-[10px] uppercase tracking-[0.3em] text-white/30 font-mono mb-6">
+                    TRUSTED BY
+                  </p>
+                  <div className="flex gap-[48px] justify-center items-center flex-wrap">
+                    {[
+                      { filename: "FIFA-logo.png", alt: "FIFA" },
+                      { filename: "ikea-logo.png", alt: "IKEA" },
+                      { filename: "rbc-logo.png", alt: "RBC" },
+                      { filename: "srf-logo.svg.png", alt: "SRF" },
+                      { filename: "swisscom-logo.png", alt: "Swisscom" },
+                      { filename: "TEDx Zurich Logo.svg", alt: "TEDx Zurich" },
+                      { filename: "ZHdK-Logo.png", alt: "ZHdK" },
+                      { filename: "ZZZ-Logo.webp", alt: "ZZZ" }
+                    ].map((logo, index) => (
+                      <CloudinaryImage 
+                        key={index}
+                        folder="company-logos" 
+                        filename={logo.filename} 
+                        alt={logo.alt} 
+                        className="trusted-logo max-h-[32px] w-auto opacity-50 grayscale brightness-[0.85] hover:opacity-100 transition-all duration-300 pointer-events-auto" 
+                      />
+                    ))}
                   </div>
                 </div>
               </section>
