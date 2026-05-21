@@ -69,7 +69,7 @@ const CONTENT = {
     footerContact: "Contact Management",
     footerBookConversation: "Propose collaboration",
     footerLanguages: "Languages",
-    footerFollow: "Follow",
+    footerFollow: "Follow, Watch, Listen",
     tickerText: "Website under construction • Happy to serve you",
     testimonialsTitle: "Testimonials",
     test1Name: "Isabel A.",
@@ -167,7 +167,7 @@ const CONTENT = {
     footerContact: "Kontakt Management",
     footerBookConversation: "Zusammenarbeit vorschlagen",
     footerLanguages: "Sprachen",
-    footerFollow: "Folgen",
+    footerFollow: "Folgen, Sehen, Hören",
     tickerText: "Website im Aufbau • Gerne für dich da",
     testimonialsTitle: "Testimonials",
     test1Name: "Isabel A.",
@@ -265,7 +265,7 @@ const CONTENT = {
     footerContact: "Gestión de Contacto",
     footerBookConversation: "Proponer colaboración",
     footerLanguages: "Idiomas",
-    footerFollow: "Seguir",
+    footerFollow: "Seguir, Ver, Escuchar",
     tickerText: "Sitio web en construcción • Feliz de servirte",
     testimonialsTitle: "Testimonios",
     test1Name: "Isabel A.",
@@ -605,7 +605,7 @@ export default function App() {
                       exit={{ opacity: 0, y: 10 }}
                       className="absolute right-0 top-12 z-50 bg-brand-black/95 border border-brand-white/20 rounded-lg p-2 flex flex-col gap-1 min-w-[90px] shadow-2xl backdrop-blur-md"
                     >
-                      {(["EN", "ES"] as Language[]).map((l) => (
+                      {(["EN", "DE", "ES"] as Language[]).map((l) => (
                         <button
                           key={l}
                           onClick={() => {
@@ -658,7 +658,7 @@ export default function App() {
                       exit={{ opacity: 0, y: 10 }}
                       className="absolute right-0 top-12 z-50 bg-brand-black/95 border border-brand-white/20 rounded-lg p-2 flex flex-col gap-1 min-w-[90px] shadow-2xl backdrop-blur-md"
                     >
-                      {(["EN", "ES"] as Language[]).map((l) => (
+                      {(["EN", "DE", "ES"] as Language[]).map((l) => (
                         <button
                           key={l}
                           onClick={() => {
@@ -1168,7 +1168,7 @@ export default function App() {
                 <span className="text-[10px] font-bold tracking-widest uppercase text-brand-grey">{t.footerFollow}</span>
                 <div className="flex gap-4">
                   <a 
-                    href="https://www.instagram.com/antonioherrera_official?igsh=cjVuaGV0emVwYnp4&utm_source=qr" 
+                    href="https://www.instagram.com/antonioherrera.mundus?igsh=cjVuaGV0emVwYnp4&utm_source=qr" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="p-2 bg-brand-white/5 border border-brand-white/10 rounded-full hover:bg-brand-red hover:border-brand-red transition-all duration-300 text-brand-white"
@@ -1176,7 +1176,7 @@ export default function App() {
                     <Instagram className="w-4 h-4" />
                   </a>
                   <a 
-                    href="https://youtube.com/@antonioherrera_official?si=GPbT-nuekHzLvy34" 
+                    href="https://youtube.com/@antonioherrera.mundus?si=12-Fng0GHvItSX2-" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="p-2 bg-brand-white/5 border border-brand-white/10 rounded-full hover:bg-brand-rosa hover:border-brand-rosa transition-all duration-300 text-brand-white"
