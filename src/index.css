@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Syne", sans-serif;
+  --font-mono: "Syne", sans-serif;
+  --font-syne: "Syne", sans-serif;
+
+  --color-brand-black: #000000;
+  --color-brand-white: #ffffff;
+  --color-brand-grey: #b2b1b1;
+  --color-brand-red: #ff3333;
+  --color-brand-orange: #ff6600;
+  --color-brand-rosa: #ff99cc;
+  --color-brand-lightblue: #75cafa;
+  --color-brand-blue: #0000ff;
+}
+
+@layer base {
+  body {
+    @apply font-syne bg-brand-black text-brand-white antialiased;
+    cursor: none;
+  }
+
+  a, button, [role="button"], .cursor-pointer {
+    cursor: none;
+  }
+}

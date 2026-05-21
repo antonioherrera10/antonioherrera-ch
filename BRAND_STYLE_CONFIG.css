@@ -1,0 +1,74 @@
+/* 
+   ANTONIO HERRERA BRAND STYLE CONFIGURATION
+   Use these variables to maintain consistency across all Antonio Herrera digital properties.
+*/
+
+:root {
+  /* Colors */
+  --ah-black: #000000;
+  --ah-white: #ffffff;
+  --ah-grey: #b2b1b1;
+  --ah-red: #ff3333;
+  --ah-orange: #ff6600;
+  --ah-rosa: #ff99cc;
+  --ah-lightblue: #75cafa;
+  --ah-blue: #0000ff;
+
+  /* Fonts */
+  --ah-font-family: 'Syne', sans-serif;
+}
+
+/* Base Styles */
+body {
+  background-color: var(--ah-black);
+  color: var(--ah-white);
+  font-family: var(--ah-font-family);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Typography Utility */
+.ah-title {
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  text-transform: uppercase;
+}
+
+.ah-label {
+  font-size: 10px;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--ah-grey);
+}
+
+/* Button Component */
+.ah-button {
+  padding: 1rem 2rem;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  border-radius: 0.75rem;
+  transition: all 0.3s ease;
+  display: inline-block;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.ah-button-primary {
+  background-color: var(--ah-red);
+  color: var(--ah-black);
+}
+
+.ah-button-primary:hover {
+  background-color: var(--ah-white);
+}
+
+.ah-button-outline {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--ah-white);
+}
+
+.ah-button-outline:hover {
+  background-color: var(--ah-white);
+  color: var(--ah-black);
+}

@@ -1,11 +1,17 @@
-<div align="center">
+# Antonio Herrera Landing Page
 
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+A premium-luxury landing page for Antonio Herrera, featuring a multilingual interface (EN, DE, ES), responsive design, and high-end animations.
 
-  <h1>Built with AI Studio</h2>
+## 🛠 Tech Stack
+*   **React 18** + **Vite**
+*   **Tailwind CSS** (Styling)
+*   **Framer Motion** (Animations)
+*   **Lucide React** (Icons)
 
-  <p>The fastest path from prompt to production with Gemini.</p>
+## 📝 Content Management
+To edit the text, links, images, or colors of the website, please refer to the **[CONTENT_GUIDE.md](./CONTENT_GUIDE.md)**.
 
-  <a href="https://aistudio.google.com/apps">Start building</a>
-
-</div>
+## 🚀 Getting Started
+1.  Install dependencies: `npm install`
+2.  Start development server: `npm run dev`
+3.  Build for production: `npm run build`

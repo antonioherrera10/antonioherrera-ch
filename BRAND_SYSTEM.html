@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brand System | ANTONIO HERRERA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            black: '#000000',
+                            white: '#ffffff',
+                            grey: '#b2b1b1',
+                            red: '#ff3333',
+                            orange: '#ff6600',
+                            rosa: '#ff99cc',
+                            lightblue: '#75cafa',
+                            blue: '#0000ff',
+                        }
+                    },
+                    fontFamily: {
+                        syne: ['Syne', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Syne', sans-serif; }
+        .grid-bg {
+            background-image: radial-gradient(circle, #ffffff11 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+    </style>
+</head>
+<body class="bg-brand-black text-brand-white min-h-screen grid-bg selection:bg-brand-red selection:text-brand-white">
+
+    <header class="border-b border-brand-white/10 py-12 px-6">
+        <div class="max-w-7xl mx-auto">
+            <h1 class="text-xs tracking-[0.4em] uppercase text-brand-grey mb-4">Official Brand System</h1>
+            <p class="text-4xl md:text-6xl font-extrabold tracking-tighter uppercase">ANTONIO HERRERA</p>
+            <p class="text-lg md:text-xl text-brand-grey mt-6 max-w-2xl font-medium">Designer | Performing Artist</p>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-6 py-24 space-y-32">
+        
+        <!-- Palette Section -->
+        <section id="colors">
+            <h2 class="text-sm font-bold tracking-[0.2em] uppercase mb-12 flex items-center gap-4">
+                <span class="w-8 h-[2px] bg-brand-red"></span> Primary Palette
+            </h2>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                <!-- Red -->
+                <div class="group">
+                    <div class="aspect-square bg-brand-red mb-4 rounded-2xl shadow-xl transition-transform group-hover:scale-[1.02]"></div>
+                    <div class="flex justify-between items-end">
+                        <div>
+                            <p class="font-bold uppercase tracking-widest text-xs">Brand Red</p>
+                            <p class="text-brand-grey text-sm mt-1">#ff3333</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Orange -->
+                <div class="group">
+                    <div class="aspect-square bg-brand-orange mb-4 rounded-2xl shadow-xl transition-transform group-hover:scale-[1.02]"></div>
+                    <div>
+                        <p class="font-bold uppercase tracking-widest text-xs">Brand Orange</p>
+                        <p class="text-brand-grey text-sm mt-1">#ff6600</p>
+                    </div>
+                </div>
+                <!-- Rosa -->
+                <div class="group">
+                    <div class="aspect-square bg-brand-rosa mb-4 rounded-2xl shadow-xl transition-transform group-hover:scale-[1.02]"></div>
+                    <div>
+                        <p class="font-bold uppercase tracking-widest text-xs">Brand Rosa</p>
+                        <p class="text-brand-grey text-sm mt-1">#ff99cc</p>
+                    </div>
+                </div>
+                <!-- Light Blue -->
+                <div class="group">
+                    <div class="aspect-square bg-brand-lightblue mb-4 rounded-2xl shadow-xl transition-transform group-hover:scale-[1.02]"></div>
+                    <div>
+                        <p class="font-bold uppercase tracking-widest text-xs">Brand Light Blue</p>
+                        <p class="text-brand-grey text-sm mt-1">#75cafa</p>
+                    </div>
+                </div>
+                <!-- Blue -->
+                <div class="group">
+                    <div class="aspect-square bg-brand-blue mb-4 rounded-2xl shadow-xl transition-transform group-hover:scale-[1.02]"></div>
+                    <div>
+                        <p class="font-bold uppercase tracking-widest text-xs">Brand Blue</p>
+                        <p class="text-brand-grey text-sm mt-1">#0000ff</p>
+                    </div>
+                </div>
+                <!-- Black -->
+                <div class="group">
+                    <div class="aspect-square bg-brand-black border border-brand-white/20 mb-4 rounded-2xl shadow-xl transition-transform group-hover:scale-[1.02]"></div>
+                    <div>
+                        <p class="font-bold uppercase tracking-widest text-xs">Brand Black</p>
+                        <p class="text-brand-grey text-sm mt-1">#000000</p>
+                    </div>
+                </div>
+                <!-- White -->
+                <div class="group">
+                    <div class="aspect-square bg-brand-white mb-4 rounded-2xl shadow-xl transition-transform group-hover:scale-[1.02]"></div>
+                    <div>
+                        <p class="font-bold uppercase tracking-widest text-xs text-brand-white">Brand White</p>
+                        <p class="text-brand-grey text-sm mt-1">#ffffff</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Typography -->
+        <section id="typography">
+            <h2 class="text-sm font-bold tracking-[0.2em] uppercase mb-12 flex items-center gap-4">
+                <span class="w-8 h-[2px] bg-brand-orange"></span> Typography
+            </h2>
+            <div class="space-y-16">
+                <div>
+                    <p class="text-[10px] text-brand-grey uppercase tracking-[0.4em] mb-4">Primary Typeface: Syne</p>
+                    <div class="space-y-4">
+                        <p class="text-7xl font-extrabold tracking-tighter uppercase leading-[0.85]">The Modern Royal</p>
+                        <p class="text-4xl font-semibold tracking-tight uppercase">Performing & Designing</p>
+                        <p class="text-xl max-w-3xl leading-relaxed text-brand-grey">
+                            Intentional expression woven into every object and act. Emotional resonance that lingers long after the moment fades. Visionary transformation that opens doors without pushing.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Elements -->
+        <section id="elements">
+            <h2 class="text-sm font-bold tracking-[0.2em] uppercase mb-12 flex items-center gap-4">
+                <span class="w-8 h-[2px] bg-brand-rosa"></span> Brand Elements
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
+                <div class="space-y-8">
+                    <p class="text-[10px] text-brand-grey uppercase tracking-[0.4em]">Interactive Patterns</p>
+                    <div class="flex flex-wrap gap-4">
+                        <button class="px-8 py-4 bg-brand-red text-brand-black text-xs font-bold uppercase tracking-widest rounded-xl hover:bg-brand-white transition-colors duration-300">Primary Button</button>
+                        <button class="px-8 py-4 border border-brand-white/20 text-brand-white text-xs font-bold uppercase tracking-widest rounded-xl hover:bg-brand-white hover:text-brand-black transition-all duration-300">Secondary Button</button>
+                    </div>
+                </div>
+                <div class="space-y-8">
+                    <p class="text-[10px] text-brand-grey uppercase tracking-[0.4em]">Interface Accents</p>
+                    <div class="flex gap-2">
+                        <div class="w-12 h-1 bg-brand-red"></div>
+                        <div class="w-12 h-1 bg-brand-orange"></div>
+                        <div class="w-12 h-1 bg-brand-rosa"></div>
+                        <div class="w-12 h-1 bg-brand-lightblue"></div>
+                        <div class="w-12 h-1 bg-brand-blue"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="border-t border-brand-white/10 py-24 px-6 opacity-40 hover:opacity-100 transition-opacity">
+        <div class="max-w-7xl mx-auto text-center">
+            <p class="text-[10px] tracking-[0.5em] uppercase">© 2026 Antonio Herrera | Brand Guidelines Portal</p>
+        </div>
+    </footer>
+
+</body>
+</html>
