@@ -1250,7 +1250,7 @@ export default function App() {
                 <div className="mt-8 pt-8 border-t border-brand-white/10">
                   <span className="text-[10px] font-bold tracking-widest uppercase text-brand-grey block mb-4">{t.footerLanguages}</span>
                   <div className="flex gap-4">
-                    {(["EN", "ES"] as Language[]).map((l) => (
+                    {(["EN", "DE", "ES"] as Language[]).map((l) => (
                       <button
                         key={l}
                         onClick={() => setLang(l)}
