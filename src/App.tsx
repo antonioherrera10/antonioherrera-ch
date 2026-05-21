@@ -1219,7 +1219,7 @@ export default function App() {
                 </a>
                 <ul className="flex flex-col gap-4 text-xs text-brand-grey tracking-widest uppercase">
                   <li><a href="https://antonioherrera.ch/work" target="_blank" rel="noopener noreferrer" className="hover:text-brand-white transition-colors">{t.footerStory}</a></li>
-                  <li><a href="https://antonioherrera.ch/profile" target="_blank" rel="noopener noreferrer" className="hover:text-brand-white transition-colors">{t.footerMediaKit}</a></li>
+                  <li><a href="https://drive.google.com/drive/folders/17zF5Ly85M9FZqljwzYJHKgjZK63YD2zZ?usp=sharing" target="_blank" rel="noopener noreferrer" className="hover:text-brand-white transition-colors">{t.footerMediaKit}</a></li>
                 </ul>
               </div>
 
@@ -1230,12 +1230,12 @@ export default function App() {
                 </span>
                 <ul className="flex flex-col gap-4 text-xs text-brand-grey tracking-widest uppercase">
                   <li>
-                    <a href="mailto:antonio.herrera@herrdesigncollective.com" className="hover:text-brand-white transition-colors block leading-relaxed">
+                    <a href="mailto:contact@herrdesigncollective.com" className="hover:text-brand-white transition-colors block leading-relaxed">
                       {t.footerContact}
                     </a>
                   </li>
                   <li>
-                    <a href="https://calendar.app.google/BzvYHEFMgKYcMMwMA" target="_blank" rel="noopener noreferrer" className="hover:text-brand-white transition-colors">
+                    <a href="mailto:antonio.herrera@herrdesigncollective.com?subject=Collaboration%20Proposal" className="hover:text-brand-white transition-colors block leading-relaxed">
                       {t.footerBookConversation}
                     </a>
                   </li>
