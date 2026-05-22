@@ -874,24 +874,27 @@ function AppContent() {
               {/* Trusted by section */}
               <section className="bg-brand-black select-none border-b border-brand-white/10">
                 <div className="max-w-7xl mx-auto text-center py-[32px]">
-                  <p className="text-[10px] uppercase tracking-[0.3em] text-[#b2b1b1] font-mono mb-6">
+                  <p className="text-[10px] uppercase tracking-[0.3em] text-white/30 font-mono mb-6">
                     TRUSTED BY
                   </p>
                   <div className="flex gap-[48px] justify-center items-center flex-wrap">
-                    {[
-                      { filename: "FIFA-logo.png", alt: "FIFA" },
-                      { filename: "ikea-logo.png", alt: "IKEA" },
-                      { filename: "rbc-logo.png", alt: "RBC" },
-                      { filename: "srf-logo.svg.png", alt: "SRF" },
-                      { filename: "swisscom-logo.png", alt: "Swisscom" },
-                      { filename: "TEDx_Zurich_Logo.png", alt: "TEDx Zurich" },
-                      { filename: "ZHdK-Logo.png", alt: "ZHdK" },
-                      { filename: "ZZZ-Logo.webp", alt: "ZZZ" }
-                    ].map((logo, index) => (
+                    {(
+                      [
+                        { filename: "FIFA-logo.png", alt: "FIFA" },
+                        { filename: "ikea-logo.png", alt: "IKEA" },
+                        { filename: "rbc-logo.png", alt: "RBC" },
+                        { filename: "srf-logo.svg.png", alt: "SRF" },
+                        { filename: "swisscom-logo.png", alt: "Swisscom" },
+                        { filename: "TEDx_Zurich_Logo.png", alt: "TEDx Zurich" },
+                        { src: "https://res.cloudinary.com/df6nnksd2/image/upload/v1779405354/ah/company-logos/ZHdK-Logo.png", alt: "ZHdK" },
+                        { filename: "ZZZ-Logo.webp", alt: "ZZZ" }
+                      ] as Array<{ filename?: string; src?: string; alt: string }>
+                    ).map((logo, index) => (
                       <CloudinaryImage 
                         key={index}
-                        folder="company-logos" 
+                        folder={logo.filename ? "company-logos" : undefined} 
                         filename={logo.filename} 
+                        src={logo.src}
                         alt={logo.alt} 
                         className="trusted-logo max-h-[41.6px] w-auto opacity-50 grayscale brightness-[0.85] hover:opacity-100 transition-all duration-300 pointer-events-auto" 
                       />
@@ -945,9 +948,8 @@ function AppContent() {
               <section className="relative h-screen flex items-center justify-center overflow-hidden bg-brand-black">
                 <div className="absolute inset-0 z-0">
                   <CloudinaryImage 
-                    folder="music"
-                    filename="antonio_hero_bg_1779317466947.png"
-                    src="/src/assets/images/antonio_hero_bg_1779317466947.png"
+                    folder="hero"
+                    filename="antonio-herrera-hero-1.jpg"
                     alt="Antonio Herrera Music Performance" 
                     className="w-full h-full object-cover object-center filter brightness-[0.45] contrast-[1.05]"
                     eager={true}
@@ -1040,24 +1042,27 @@ function AppContent() {
               {/* Partners Logos Section */}
               <section className="bg-brand-black select-none border-b-4 border-brand-white">
                 <div className="max-w-7xl mx-auto text-center py-[32px]">
-                  <p className="text-[10px] uppercase tracking-[0.3em] text-[#b2b1b1] font-mono mb-6">
+                  <p className="text-[10px] uppercase tracking-[0.3em] text-white/30 font-mono mb-6">
                     TRUSTED BY
                   </p>
                   <div className="flex gap-[48px] justify-center items-center flex-wrap">
-                    {[
-                      { filename: "FIFA-logo.png", alt: "FIFA" },
-                      { filename: "ikea-logo.png", alt: "IKEA" },
-                      { filename: "rbc-logo.png", alt: "RBC" },
-                      { filename: "srf-logo.svg.png", alt: "SRF" },
-                      { filename: "swisscom-logo.png", alt: "Swisscom" },
-                      { filename: "TEDx_Zurich_Logo.png", alt: "TEDx Zurich" },
-                      { filename: "ZHdK-Logo.png", alt: "ZHdK" },
-                      { filename: "ZZZ-Logo.webp", alt: "ZZZ" }
-                    ].map((logo, index) => (
+                    {(
+                      [
+                        { filename: "FIFA-logo.png", alt: "FIFA" },
+                        { filename: "ikea-logo.png", alt: "IKEA" },
+                        { filename: "rbc-logo.png", alt: "RBC" },
+                        { filename: "srf-logo.svg.png", alt: "SRF" },
+                        { filename: "swisscom-logo.png", alt: "Swisscom" },
+                        { filename: "TEDx_Zurich_Logo.png", alt: "TEDx Zurich" },
+                        { src: "https://res.cloudinary.com/df6nnksd2/image/upload/v1779405354/ah/company-logos/ZHdK-Logo.png", alt: "ZHdK" },
+                        { filename: "ZZZ-Logo.webp", alt: "ZZZ" }
+                      ] as Array<{ filename?: string; src?: string; alt: string }>
+                    ).map((logo, index) => (
                       <CloudinaryImage 
                         key={index}
-                        folder="company-logos" 
+                        folder={logo.filename ? "company-logos" : undefined} 
                         filename={logo.filename} 
+                        src={logo.src}
                         alt={logo.alt} 
                         className="trusted-logo max-h-[41.6px] w-auto opacity-50 grayscale brightness-[0.85] hover:opacity-100 transition-all duration-300 pointer-events-auto" 
                       />
