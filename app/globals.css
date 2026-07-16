@@ -1,0 +1,97 @@
+@import "tailwindcss";
+
+@theme {
+  /* Brand colors from ah-tokens.json */
+  --color-ah-black: #000000;
+  --color-ah-white: #ffffff;
+  --color-ah-grey: #b2b1b1;
+  --color-ah-red: #ff3333;
+  --color-ah-orange: #ff6600;
+  --color-ah-rosa: #ff99cc;
+  --color-ah-lightblue: #75cafa;
+  --color-ah-blue: #0000ff;
+
+  /* Aliases for brand compatibility */
+  --color-brand-black: #000000;
+  --color-brand-white: #ffffff;
+  --color-brand-grey: #b2b1b1;
+  --color-brand-red: #ff3333;
+  --color-brand-orange: #ff6600;
+  --color-brand-rosa: #ff99cc;
+  --color-brand-lightblue: #75cafa;
+  --color-brand-blue: #0000ff;
+
+  /* Font mapping using --font-syne loaded via next/font/google */
+  --font-syne: var(--font-syne), sans-serif;
+  --font-sans: var(--font-syne), sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-black text-white antialiased font-syne;
+    cursor: none;
+  }
+
+  /* Support disabling custom cursor on touch devices and reduced-motion */
+  @media (hover: none) or (pointer: coarse) {
+    body, a, button, [role="button"], .cursor-pointer {
+      cursor: auto !important;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    body, a, button, [role="button"], .cursor-pointer {
+      cursor: auto !important;
+    }
+  }
+
+  a, button, [role="button"], .cursor-pointer {
+    cursor: none;
+  }
+}
+
+/* Custom Display Typographies and Labels */
+.ah-title {
+  font-weight: 700;
+  letter-spacing: -0.05em;
+  text-transform: uppercase;
+}
+
+.ah-label {
+  font-size: 10px;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--color-ah-grey);
+}
+
+.ah-button {
+  padding: 1rem 2rem;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+}
+
+.ah-button-primary {
+  background-color: var(--color-ah-red);
+  color: var(--color-ah-black);
+}
+
+.ah-button-primary:hover {
+  background-color: var(--color-ah-white);
+}
+
+.ah-button-outline {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--color-ah-white);
+}
+
+.ah-button-outline:hover {
+  background-color: var(--color-ah-white);
+  color: var(--color-ah-black);
+}

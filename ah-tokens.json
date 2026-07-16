@@ -1,0 +1,15 @@
+{
+  "colors": {
+    "black": "#000000",
+    "white": "#ffffff",
+    "grey": "#b2b1b1",
+    "red": "#ff3333",
+    "orange": "#ff6600",
+    "rosa": "#ff99cc",
+    "lightblue": "#75cafa",
+    "blue": "#0000ff"
+  },
+  "fonts": {
+    "syne": "var(--font-syne)"
+  }
+}
