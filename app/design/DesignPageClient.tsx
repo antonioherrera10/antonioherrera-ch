@@ -8,7 +8,6 @@ import { CONTENT, SOCIAL_LINKS, GOOGLE_CALENDAR_LINK } from "@/lib/content";
 import TrustedBy from "@/components/TrustedBy";
 import Testimonials from "@/components/Testimonials";
 import CloudinaryImage from "@/components/CloudinaryImage";
-import Footer from "@/components/Footer";
 
 interface Project {
   title: string;
@@ -391,9 +390,6 @@ export default function DesignPageClient({ initialProjects }: DesignPageClientPr
           </div>
         </div>
       </section>
-
-      {/* 10. FOOTER */}
-      <Footer />
     </div>
   );
 }

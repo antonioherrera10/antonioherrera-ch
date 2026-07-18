@@ -8,7 +8,6 @@ import { CONTENT, SOCIAL_LINKS, MUSIC_PROJECTS, GOOGLE_CALENDAR_LINK } from "@/l
 import TrustedBy from "@/components/TrustedBy";
 import MuxVideo from "@/components/MuxVideo";
 import Testimonials from "@/components/Testimonials";
-import Footer from "@/components/Footer";
 
 export default function MusicPageClient() {
   const [email, setEmail] = useState("");
@@ -379,9 +378,6 @@ export default function MusicPageClient() {
           </div>
         </div>
       </section>
-
-      {/* 10. FOOTER */}
-      <Footer />
     </div>
   );
 }

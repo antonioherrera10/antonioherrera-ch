@@ -5,7 +5,7 @@ import DesignPageClient from "./DesignPageClient";
 
 export const metadata: Metadata = {
   title: "Design",
-  description: "Bespoke strategic design, corporate identity, and modern responsive website development by Antonio Herrera, based in Zurich.",
+  description: "Brand, Web & Design Consultation",
 };
 
 export default async function DesignPage() {
