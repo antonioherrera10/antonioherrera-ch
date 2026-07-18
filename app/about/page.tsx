@@ -1,5 +1,6 @@
 import React from "react";
 import { Metadata } from "next";
+import Testimonials from "@/components/Testimonials";
 
 export const metadata: Metadata = {
   title: "About",
@@ -46,12 +47,15 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Testimonials Grid Placeholder */}
-      <section id="testimonials-overview" className="py-20 text-center max-w-3xl mx-auto">
-        <h2 className="text-2xl font-bold uppercase tracking-wide mb-6">Endorsements</h2>
-        <p className="text-brand-grey mb-8">
-          Curated reviews from brand strategy consultants, creative technologists, and event producers.
-        </p>
+      {/* Testimonials Grid Section */}
+      <section id="testimonials-overview" className="py-20 max-w-7xl mx-auto">
+        <div className="text-center max-w-3xl mx-auto mb-12">
+          <h2 className="text-2xl font-bold uppercase tracking-wide mb-4 text-brand-white">Endorsements</h2>
+          <p className="text-brand-grey text-sm mb-8">
+            Curated reviews from brand strategy consultants, creative technologists, and event producers.
+          </p>
+        </div>
+        <Testimonials ids={["isabel-a", "toni-ann-o", "donika-p"]} />
       </section>
     </div>
   );

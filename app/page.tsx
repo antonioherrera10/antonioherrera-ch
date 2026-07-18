@@ -3,6 +3,8 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { getAllProjects } from "@/lib/work";
 import { CONTENT, GOOGLE_CALENDAR_LINK, SOCIAL_LINKS } from "@/lib/content";
+import TrustedBy from "@/components/TrustedBy";
+import Testimonials from "@/components/Testimonials";
 
 export const metadata: Metadata = {
   title: "ANTONIO HERRERA | Designer & Performing Artist, Zurich",
@@ -45,20 +47,7 @@ export default async function HomePage() {
       </section>
 
       {/* 2. TRUSTED BY SECTION */}
-      <section id="trusted-by" className="py-16 border-b border-white/10 bg-white/[0.01]">
-        <div className="max-w-7xl mx-auto px-6">
-          <p className="text-center text-[10px] uppercase tracking-[0.4em] text-ah-grey/60 mb-10">
-            {CONTENT.partnersTitle}
-          </p>
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-8 items-center justify-items-center opacity-60 hover:opacity-100 transition-opacity duration-300">
-            {["Zurich Performance Hall", "HERR Design Collective", "Boutique Group", "Creative Europe", "Swiss Art Alliance"].map((partner, index) => (
-              <span key={index} className="text-xs md:text-sm font-bold uppercase tracking-widest text-center text-white hover:text-ah-red transition-colors duration-200">
-                {partner}
-              </span>
-            ))}
-          </div>
-        </div>
-      </section>
+      <TrustedBy />
 
       {/* 3. STAKES SECTION */}
       <section id="stakes" className="py-24 md:py-32 border-b border-white/10">
@@ -90,7 +79,7 @@ export default async function HomePage() {
             <div>
               <span className="text-[10px] uppercase tracking-[0.4em] text-ah-orange font-bold">02. Value Proposition</span>
               <h2 className="text-3xl md:text-5xl font-extrabold uppercase tracking-tight mt-4 font-syne leading-tight">
-                A new architecture of life.
+                A new blueprint for life.
               </h2>
             </div>
             <span className="text-5xl font-extrabold text-white/5 hidden lg:block select-none">PROPOSITION</span>
@@ -151,7 +140,7 @@ export default async function HomePage() {
                   The Strategic Designer
                 </h3>
                 <p className="text-ah-grey leading-relaxed mb-8">
-                  Redesigning physical environments, product systems, and brand identities. We craft premium spatial architectures that align your outer workspace with your inner trajectory.
+                  Redesigning physical environments, product systems, and brand identities. We craft premium spatial configurations that align your outer workspace with your inner trajectory.
                 </p>
               </div>
               <div className="border-t border-white/10 pt-6 flex items-center justify-between">
@@ -194,29 +183,7 @@ export default async function HomePage() {
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              { name: CONTENT.test1Name, role: CONTENT.test1Role, quote: CONTENT.test1Quote, border: "hover:border-ah-red/40" },
-              { name: CONTENT.test2Name, role: CONTENT.test2Role, quote: CONTENT.test2Quote, border: "hover:border-ah-orange/40" },
-              { name: CONTENT.test3Name, role: CONTENT.test3Role, quote: CONTENT.test3Quote, border: "hover:border-ah-rosa/40" },
-              { name: CONTENT.test4Name, role: CONTENT.test4Role, quote: CONTENT.test4Quote, border: "hover:border-ah-lightblue/40" },
-              { name: CONTENT.test5Name, role: CONTENT.test5Role, quote: CONTENT.test5Quote, border: "hover:border-ah-blue/40" },
-              { name: CONTENT.test9Name, role: CONTENT.test9Role, quote: CONTENT.test9Quote, border: "hover:border-ah-red/40" }
-            ].map((t, idx) => (
-              <div key={idx} className={`p-8 border border-white/10 bg-white/[0.01] rounded-2xl transition-all duration-300 flex flex-col justify-between ${t.border}`}>
-                <p className="text-sm text-ah-grey italic leading-relaxed mb-6">
-                  &ldquo;{t.quote}&rdquo;
-                </p>
-                <div className="border-t border-white/10 pt-4 flex justify-between items-center">
-                  <div>
-                    <h4 className="text-xs font-bold uppercase tracking-widest text-white">{t.name}</h4>
-                    <p className="text-[10px] text-ah-grey tracking-wider mt-1">{t.role}</p>
-                  </div>
-                  <span className="text-[10px] uppercase text-white/20 select-none">#AH</span>
-                </div>
-              </div>
-            ))}
-          </div>
+          <Testimonials ids={["isabel-a", "toni-ann-o", "donika-p", "clifford-l", "paulina-z", "andreas-s"]} />
         </div>
       </section>
 

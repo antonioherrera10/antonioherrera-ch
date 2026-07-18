@@ -10,7 +10,11 @@ export const metadata: Metadata = {
 };
 
 export default async function WorkPage() {
-  const projects = await getAllProjects();
+  const allProjects = await getAllProjects();
+  const projects = allProjects.filter((project) => {
+    const disp = (project.discipline || "").toLowerCase();
+    return !disp.includes("music") && !disp.includes("performing") && !disp.includes("performance");
+  });
 
   return (
     <div className="w-full">

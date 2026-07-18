@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     default: "ANTONIO HERRERA | Designer & Performing Artist, Zurich",
   },
   description:
-    "Antonio Herrera is a premium designer and performing artist based in Zurich, CH. Restructuring life architectures and curating unforgettable physical and acoustic moments.",
+    "Antonio Herrera is a premium designer and performing artist based in Zurich, CH. Curating unforgettable physical, visual, and acoustic moments through strategic spatial design and performing arts.",
   metadataBase: new URL("https://antonioherrera.ch"),
   openGraph: {
     title: "ANTONIO HERRERA | Designer & Performing Artist, Zurich",

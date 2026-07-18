@@ -8,14 +8,146 @@ export const SOCIAL_LINKS = {
   mediaKit: "https://drive.google.com/drive/folders/17zF5Ly85M9FZqljwzYJHKgjZK63YD2zZ?usp=sharing",
   contactEmail: "contact@herrdesigncollective.com",
   collaborationEmail: "antonio.herrera@herrdesigncollective.com?subject=Collaboration%20Proposal",
+  managementEmail: "management@antonioherrera.com", // TODO Placeholder
+  bookingEmail: "booking@antonioherrera.com", // TODO Placeholder
 };
+
+export interface Testimonial {
+  id: string;
+  quote: string;
+  name: string;
+  role: string;
+  tag: string;
+}
+
+export const TESTIMONIALS: Testimonial[] = [
+  {
+    id: "isabel-a",
+    name: "Isabel A.",
+    role: "Brand Strategy Consultant",
+    quote: "You all are architects of unforgettable happy moments. Thank you for letting us celebrate with you. Great people in this group. I laughed and shouted and danced so much. My heart is so happy.",
+    tag: "music"
+  },
+  {
+    id: "toni-ann-o",
+    name: "Toni-Ann O.",
+    role: "Photographer and Filmmaker",
+    quote: "Best event ever in life. Really an amazing night, dear. Thanks for being unapologetically authentic and for taking us on that journey with you.",
+    tag: "music"
+  },
+  {
+    id: "donika-p",
+    name: "Donika P.",
+    role: "Experience Designer",
+    quote: "Best. Party. Ever. I still can't believe it. It was like a magical dream. Thank you so much.",
+    tag: "music"
+  },
+  {
+    id: "clifford-l",
+    name: "Clifford L.",
+    role: "Stylist and Image Consultant",
+    quote: "An unforgettable evening celebrating food, fashion, friendship and pure fabulousness. Surrounded by inspiring guests and the incredible creative team, we experienced a truly exclusive fusion of art and design. We had a ball.",
+    tag: "music"
+  },
+  {
+    id: "paulina-z",
+    name: "Paulina Z.",
+    role: "Creative Technologist",
+    quote: "We absolutely adore you. The experience was so extraordinary that even my grandchildren won't believe I once attended a party like this. It was unforgettable in every sense.",
+    tag: "music"
+  },
+  {
+    id: "sarah-o",
+    name: "Sarah O.",
+    role: "Lecturer",
+    quote: "I was so amazed by your performance. I was speechless afterwards. It was great. You are sooo talented. Thank you.",
+    tag: "performance"
+  },
+  {
+    id: "stefan-k",
+    name: "Stefan K.",
+    role: "Finance Executive",
+    quote: "I felt alive and people loved it.",
+    tag: "executive"
+  },
+  {
+    id: "thiago-z",
+    name: "Thiago Z.",
+    role: "Professional Services",
+    quote: "It was very professional, I will come again",
+    tag: "services"
+  },
+  {
+    id: "andreas-s",
+    name: "Andreas S.",
+    role: "Entrepreneur, CIO & Family Office",
+    quote: "You are multi-skilled. I liked the combination of the talk, the design exhibition and the music performance. Thanks again for your event invitation. It was definitely a highlight of the year-end.",
+    tag: "music"
+  },
+  {
+    id: "isabel-g",
+    name: "Isabel G.",
+    role: "Entrepreneur",
+    quote: "I know you organise innovative, creative events that step outside the ordinary. I love your work.",
+    tag: "events"
+  }
+];
+
+export interface PartnerLogo {
+  name: string;
+  logoSrc?: string;
+}
+
+export const PARTNER_LOGOS: PartnerLogo[] = [
+  { name: "Zurich Performance Hall", logoSrc: "" },
+  { name: "HERR Design Collective", logoSrc: "" },
+  { name: "Boutique Group", logoSrc: "" },
+  { name: "Creative Europe", logoSrc: "" },
+  { name: "Swiss Art Alliance", logoSrc: "" }
+];
+
+export interface MusicProject {
+  id: string;
+  title: string;
+  description: string;
+  discipline: string;
+  year: string;
+  venue?: string;
+}
+
+export const MUSIC_PROJECTS: MusicProject[] = [
+  {
+    id: "vocal-live-zurich",
+    title: "Vocal & Acoustic Live Curation",
+    description: "An intimate live experience blending vocal performance, organic rhythms, and custom light installations.",
+    discipline: "Live Performance",
+    year: "2026",
+    venue: "Zurich Performance Hall"
+  },
+  {
+    id: "experimental-resonance",
+    title: "Acoustic Resonance & Soundscapes",
+    description: "An experimental music set exploring spatial audio-visual installations and vocal storytelling.",
+    discipline: "Artistic Sound Design",
+    year: "2025",
+    venue: "HERR Design Collective"
+  },
+  {
+    id: "piano-improvisations",
+    title: "Ambient Voice & Piano Sessions",
+    description: "A recorded collection of minimalist piano improvisations accompanying live poetry readings.",
+    discipline: "Recording Project",
+    year: "2025",
+    venue: "Swiss Art Alliance"
+  }
+];
 
 export const CONTENT = {
   cta: "Schedule a Consultation", // Global CTA text
-  heroTitle: "Design your life architecture.",
+  heroTitle: "Design with purpose and resonance.",
   heroSub: "Transform your life into a profound experience by building genuine connections.",
   musicHeroTitle: "Connect through music",
-  musicHeroSub: "Transform your events into joyful experiences that build genuine connections.",
+  musicHeroSub: "Transform your events into joyous experiences that build genuine connections.",
   showreelTitle: "Showreel",
   showreelSub: "Experience the rhythm, the light, and the pure energy of live connection.",
   partnersTitle: "Trusted by",
@@ -38,10 +170,6 @@ export const CONTENT = {
   feature4Desc: "Living or working in environments that were designed for a previous version of your life. The space keeps reinforcing who you were, not who you’re becoming.",
   feature5Title: "Leadership.",
   feature5Desc: "Leading through control rather than trust. It delivers short-term results but slowly empties the room of the people worth keeping.",
-  expTitle: "I know how frustrating is to not move forward in life. I was there.",
-  exp1: "More than 10 years of experience",
-  exp2: "More than 50 engagements",
-  exp3: "More than 20 countries visited",
   howTitle: "How to begin the new life journey",
   howStep1: "Click on Register",
   howStep2: "Fill out the form and hit Send",
@@ -70,41 +198,15 @@ export const CONTENT = {
   footerFollow: "Follow, Watch, Listen",
   tickerText: "Happy to serve you",
   testimonialsTitle: "Testimonials",
-  test1Name: "Isabel A.",
-  test1Role: "Brand Strategy Consultant",
-  test1Quote: "You all are architects of unforgettable happy moments. Thank you for letting us celebrate with you. Great people in this group. I laughed and shouted and danced so much. My heart is so happy.",
-  test2Name: "Toni-Ann O.",
-  test2Role: "Photographer and Filmmaker",
-  test2Quote: "Best event ever in life. Really an amazing night, dear. Thanks for being unapologetically authentic and for taking us on that journey with you.",
-  test3Name: "Donika P.",
-  test3Role: "Experience Designer",
-  test3Quote: "Best. Party. Ever. I still can't believe it. It was like a magical dream. Thank you so much.",
-  test4Name: "Clifford L.",
-  test4Role: "Stylist and Image Consultant",
-  test4Quote: "An unforgettable evening celebrating food, fashion, friendship and pure fabulousness. Surrounded by inspiring guests and the incredible creative team, we experienced a truly exclusive fusion of art and design. We had a ball.",
-  test5Name: "Paulina Z.",
-  test5Role: "Creative Technologist",
-  test5Quote: "We absolutely adore you. The experience was so extraordinary that even my grandchildren won't believe I once attended a party like this. It was unforgettable in every sense.",
-  test6Name: "Sarah O.",
-  test6Role: "Lecturer",
-  test6Quote: "I was so amazed by your performance. I was speechless afterwards. It was great. You are sooo talented. Thank you.",
-  test7Name: "Stefan K.",
-  test7Role: "Finance Executive",
-  test7Quote: "I felt alive and people loved it.",
-  test8Name: "Thiago Z.",
-  test8Role: "Professional Services",
-  test8Quote: "It was very professional, I will come again",
-  test9Name: "Andreas S.",
-  test9Role: "Entrepreneur, CIO & Family Office",
-  test9Quote: "You are multi-skilled. I liked the combination of the talk, the design exhibition and the music performance. Thanks again for your event invitation. It was definitely a highlight of the year-end.",
-  test10Name: "Isabel G.",
-  test10Role: "Entrepreneur",
-  test10Quote: "I know you organise innovative, creative events that step outside the ordinary. I love your work.",
   designTitle: "Under construction",
-  designSubtitle: "I am designing a new life architecture space. Something extraordinary is being crafted.",
+  designSubtitle: "I am designing a new creative and immersive space. Something extraordinary is being crafted.",
   designCta: "Join the VIP Waitlist",
   designEmailPlaceholder: "Enter your email address...",
   designNamePlaceholder: "Your elite name...",
   designSuccessText: "Thank you! You are on the registry for the next design evolution.",
   designBackCta: "Back to Home",
+  expTitle: "I know how frustrating is to not move forward in life. I was there.",
+  exp1: "More than 10 years of experience",
+  exp2: "More than 50 engagements",
+  exp3: "More than 20 countries visited",
 };
