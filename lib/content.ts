@@ -8,8 +8,9 @@ export const SOCIAL_LINKS = {
   mediaKit: "https://drive.google.com/drive/folders/17zF5Ly85M9FZqljwzYJHKgjZK63YD2zZ?usp=sharing",
   contactEmail: "contact@herrdesigncollective.com",
   collaborationEmail: "antonio.herrera@herrdesigncollective.com?subject=Collaboration%20Proposal",
-  managementEmail: "management@antonioherrera.com", // TODO Placeholder
-  bookingEmail: "booking@antonioherrera.com", // TODO Placeholder
+  managementEmail: "management@antonioherrera.ch", // TODO until confirmed
+  bookingEmail: "booking@antonioherrera.ch", // TODO until confirmed
+  pressEmail: "press@antonioherrera.ch", // TODO until confirmed
 };
 
 export interface Testimonial {
@@ -19,6 +20,27 @@ export interface Testimonial {
   role: string;
   tag: string;
 }
+
+export interface VideoTestimonial {
+  title: string;
+  role: string;
+  playbackSrc?: string;
+}
+
+export const VIDEO_TESTIMONIALS: VideoTestimonial[] = [
+  {
+    title: "Isabel A.",
+    role: "Brand Strategy Consultant",
+  },
+  {
+    title: "Toni-Ann O.",
+    role: "Photographer & Filmmaker",
+  },
+  {
+    title: "Donika P.",
+    role: "Experience Designer",
+  }
+];
 
 export const TESTIMONIALS: Testimonial[] = [
   {
@@ -143,7 +165,7 @@ export const MUSIC_PROJECTS: MusicProject[] = [
 ];
 
 export const CONTENT = {
-  cta: "Schedule a Consultation", // Global CTA text
+  cta: "Schedule a consultation", // Global CTA text
   heroTitle: "Design with purpose and resonance.",
   heroSub: "Transform your life into a profound experience by building genuine connections.",
   musicHeroTitle: "Connect through music",
@@ -210,3 +232,60 @@ export const CONTENT = {
   exp2: "More than 50 engagements",
   exp3: "More than 20 countries visited",
 };
+
+export interface CVItem {
+  yearOrPeriod: string;
+  title: string;
+  institutionOrContext: string;
+  details?: string;
+}
+
+export const EDUCATION_CV: CVItem[] = [
+  {
+    yearOrPeriod: "TODO (Year)",
+    title: "Master of Arts (MA)",
+    institutionOrContext: "Zurich University of the Arts (ZHdK)",
+    details: "Focusing on spatial strategies, sensory aesthetics, and interaction design."
+  },
+  {
+    yearOrPeriod: "TODO (Year)",
+    title: "Master of Arts / Postgraduate Studies",
+    institutionOrContext: "Royal College of Art (RCA)",
+    details: "Expanding cross-disciplinary visual communication and performance curations."
+  },
+  {
+    yearOrPeriod: "TODO (Year)",
+    title: "Design MBA / Strategic Leadership",
+    institutionOrContext: "TODO (Institution)",
+    details: "Combining design thinking with corporate brand architectures and business operations."
+  }
+];
+
+export const PRACTICE_HIGHLIGHTS: CVItem[] = [
+  {
+    yearOrPeriod: "2016 – Present",
+    title: "Founder & Creative Director",
+    institutionOrContext: "HERR Design Collective (Zurich, Switzerland)",
+    details: "Directing bespoke brand identities, full-stack Next.js web applications, and premium physical layout consultations."
+  },
+  {
+    yearOrPeriod: "2014 – Present",
+    title: "Solo Performing Vocalist & Curation Lead",
+    institutionOrContext: "International Concert Halls & Private Assemblies",
+    details: "Developing live acoustic loops, ambient resonance structures, and vocal journeys for high-stakes leaders across 20+ countries."
+  },
+  {
+    yearOrPeriod: "2020 – 2024",
+    title: "Senior Identity Consultant & Architectural Lead",
+    institutionOrContext: "TODO (Corporate Brand Group)",
+    details: "Overhauling physical layouts, typographic blueprints, and high-performance frontend code architectures."
+  }
+];
+
+export const CREDENTIALS: string[] = [
+  "Bespoke Swiss Typographic Alignment & Modular Grid Expertise",
+  "High-Performance Server-Side & Next.js App Router Architecture Specialist",
+  "Zero-Judgment Vocal Acoustic Resonance & Live Curation Director",
+  "Zurich & International Brand Transformation Advisor"
+];
+

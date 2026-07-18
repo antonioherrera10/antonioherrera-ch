@@ -2,8 +2,8 @@ import React from "react";
 import { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import CloudinaryImage from "@/components/CloudinaryImage";
-import MuxVideo from "@/components/MuxVideo";
+import { ArrowLeft, ArrowRight, Calendar } from "lucide-react";
+import MediaPlaceholder from "@/components/MediaPlaceholder";
 import { getAllProjects, getProjectBySlug } from "@/lib/work";
 import { GOOGLE_CALENDAR_LINK, CONTENT } from "@/lib/content";
 
@@ -30,17 +30,11 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
   }
 
   return {
-    title: project.title,
+    title: `${project.title} — Case Study`,
     description: project.summary,
     openGraph: {
       title: project.title,
       description: project.summary,
-      images: [
-        {
-          url: `https://res.cloudinary.com/df6nnksd2/image/upload/f_auto,q_auto/ah/work/${project.cover}`,
-          alt: project.title,
-        },
-      ],
     },
   };
 }
@@ -52,138 +46,171 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     notFound();
   }
 
-  // Fetch adjacent projects for prev/next navigation
+  // Fetch adjacent projects with perfect round-robin cycling so it never dead-ends
   const allProjects = await getAllProjects();
   const currentIndex = allProjects.findIndex((p) => p.slug === project.slug);
-  const prevProject = currentIndex > 0 ? allProjects[currentIndex - 1] : null;
-  const nextProject = currentIndex < allProjects.length - 1 ? allProjects[currentIndex + 1] : null;
+  
+  const prevIndex = (currentIndex - 1 + allProjects.length) % allProjects.length;
+  const nextIndex = (currentIndex + 1) % allProjects.length;
+  
+  const prevProject = allProjects[prevIndex];
+  const nextProject = allProjects[nextIndex];
+
+  // Parse markdown body text paragraphs
+  const paragraphs = project.content
+    ? project.content
+        .split(/\n\s*\n/)
+        .map((p) => p.trim())
+        .filter(Boolean)
+    : [];
+
+  const p1 = paragraphs[0] || "We build robust layouts designed to optimize conversion and command authority.";
+  const p2 = paragraphs[1] || "Every asset is delivered under modern Swiss grid alignment principles to ensure absolute operational clarity.";
 
   return (
     <article className="w-full">
-      {/* 1. Cover Hero */}
-      <section className="relative w-full h-[60vh] md:h-[80vh] bg-brand-black overflow-hidden">
-        <CloudinaryImage
-          folder="work"
-          filename={project.cover}
-          alt={`${project.title} cover image`}
-          eager={true}
-          className="w-full h-full object-cover object-center filter brightness-[0.6]"
+      {/* 1. Cover Hero (MediaPlaceholder) */}
+      <section className="relative w-full bg-neutral-950 overflow-hidden">
+        <MediaPlaceholder
+          aspect="16/9"
+          label={`${project.title.toUpperCase()} // COVER HERO`}
+          className="!border-0 !rounded-none"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-brand-black via-brand-black/20 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/35 to-transparent pointer-events-none" />
       </section>
 
       {/* 2. Title + Summary Block */}
-      <section className="max-w-4xl mx-auto px-6 pt-16 pb-8 text-center md:text-left">
-        <span className="text-xs uppercase tracking-[0.4em] text-brand-grey font-mono block mb-4">
-          Project Case Study
+      <section className="max-w-4xl mx-auto px-6 pt-16 pb-8 text-center md:text-left space-y-6">
+        <span className="text-xs uppercase tracking-[0.4em] text-brand-grey font-mono block">
+          PROJECT CASE STUDY
         </span>
-        <h1 className="text-4xl md:text-6xl font-bold uppercase tracking-tight mb-6">
+        <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-white font-syne uppercase">
           {project.title}
         </h1>
-        <p className="text-xl md:text-2xl text-brand-grey leading-relaxed">
+        <p className="text-xl md:text-2xl text-brand-grey leading-relaxed max-w-3xl">
           {project.summary}
         </p>
       </section>
 
       {/* 3. Meta Row */}
-      <section className="max-w-4xl mx-auto px-6 py-8 border-y border-brand-white/10 my-8">
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
+      <section className="max-w-4xl mx-auto px-6 py-8 border-y border-white/10 my-10">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center sm:text-left">
           <div>
-            <span className="text-[10px] uppercase tracking-[0.3em] text-brand-grey font-semibold block mb-1">
-              Discipline
+            <span className="text-[10px] uppercase tracking-[0.3em] text-brand-grey font-bold block mb-1">
+              DISCIPLINE
             </span>
-            <span className="text-sm font-medium text-brand-white">{project.discipline}</span>
+            <span className="text-sm font-semibold text-white uppercase tracking-wider">{project.discipline}</span>
           </div>
           <div>
-            <span className="text-[10px] uppercase tracking-[0.3em] text-brand-grey font-semibold block mb-1">
-              Year
+            <span className="text-[10px] uppercase tracking-[0.3em] text-brand-grey font-bold block mb-1">
+              YEAR
             </span>
-            <span className="text-sm font-medium text-brand-white">{project.year}</span>
+            <span className="text-sm font-semibold text-white tracking-widest">{project.year}</span>
           </div>
           <div>
-            <span className="text-[10px] uppercase tracking-[0.3em] text-brand-grey font-semibold block mb-1">
-              Client
+            <span className="text-[10px] uppercase tracking-[0.3em] text-brand-grey font-bold block mb-1">
+              CLIENT
             </span>
-            <span className="text-sm font-medium text-brand-white">{project.client}</span>
+            <span className="text-sm font-semibold text-white uppercase tracking-wider">{project.client}</span>
           </div>
         </div>
       </section>
 
-      {/* 4. Optional Mux Video */}
-      {project.muxId && (
-        <section className="max-w-5xl mx-auto px-6 py-12">
-          <div className="aspect-video bg-brand-black rounded-3xl overflow-hidden border border-brand-white/10">
-            <MuxVideo playbackId={project.muxId} title={project.title} />
+      {/* 4. Interleaved Gallery and Body Blocks */}
+      <section className="w-full max-w-5xl mx-auto px-6 py-12 flex flex-col gap-12 md:gap-16">
+        {/* Gallery 01 */}
+        {project.gallery[0] && (
+          <div className="relative overflow-hidden rounded-2xl md:rounded-3xl border border-white/10 bg-neutral-950 transition-colors duration-300 hover:border-white/20">
+            <MediaPlaceholder
+              aspect="16/9"
+              label={`${project.title.toUpperCase()} // DETAIL I`}
+              className="!border-0"
+            />
           </div>
-        </section>
-      )}
-
-      {/* 5. Project Body Content (Optional MDX markdown text) */}
-      {project.content && (
-        <section className="max-w-3xl mx-auto px-6 py-12 prose prose-invert">
-          <div className="text-brand-grey text-base md:text-lg leading-relaxed whitespace-pre-line">
-            {project.content}
-          </div>
-        </section>
-      )}
-
-      {/* 6. Gallery Showcase (Full-width images) */}
-      {project.gallery.length > 0 && (
-        <section className="w-full max-w-7xl mx-auto px-6 py-12 flex flex-col gap-12">
-          {project.gallery.map((image, index) => (
-            <div key={index} className="relative aspect-[16/9] w-full overflow-hidden rounded-3xl bg-brand-white/5 border border-brand-white/10">
-              <CloudinaryImage
-                folder="work"
-                filename={image}
-                alt={`${project.title} gallery image ${index + 1}`}
-                className="w-full h-full object-cover object-center"
-              />
-            </div>
-          ))}
-        </section>
-      )}
-
-      {/* 7. Previous/Next Project Links */}
-      <section className="max-w-4xl mx-auto px-6 py-16 border-t border-brand-white/10 flex justify-between items-center">
-        {prevProject ? (
-          <Link
-            href={`/work/${prevProject.slug}`}
-            className="flex flex-col text-left group hover:text-brand-red transition-colors"
-          >
-            <span className="text-[10px] uppercase tracking-[0.3em] text-brand-grey mb-1">Previous</span>
-            <span className="text-lg font-bold uppercase tracking-tight font-mono">&larr; {prevProject.title}</span>
-          </Link>
-        ) : (
-          <div />
         )}
 
-        {nextProject ? (
-          <Link
-            href={`/work/${nextProject.slug}`}
-            className="flex flex-col text-right group hover:text-brand-red transition-colors"
-          >
-            <span className="text-[10px] uppercase tracking-[0.3em] text-brand-grey mb-1">Next Project</span>
-            <span className="text-lg font-bold uppercase tracking-tight font-mono">{nextProject.title} &rarr;</span>
-          </Link>
-        ) : (
-          <div />
+        {/* Paragraph 1 */}
+        <div className="max-w-3xl mx-auto text-brand-grey text-base md:text-lg leading-relaxed font-mono py-6 px-6 md:px-10 border-l-2 border-brand-red bg-white/[0.01] rounded-r-2xl">
+          <p>{p1}</p>
+        </div>
+
+        {/* Gallery 02 */}
+        {project.gallery[1] && (
+          <div className="relative overflow-hidden rounded-2xl md:rounded-3xl border border-white/10 bg-neutral-950 transition-colors duration-300 hover:border-white/20">
+            <MediaPlaceholder
+              aspect="16/9"
+              label={`${project.title.toUpperCase()} // DETAIL II`}
+              className="!border-0"
+            />
+          </div>
+        )}
+
+        {/* Paragraph 2 */}
+        <div className="max-w-3xl mx-auto text-brand-grey text-base md:text-lg leading-relaxed font-mono py-6 px-6 md:px-10 border-l-2 border-brand-red bg-white/[0.01] rounded-r-2xl">
+          <p>{p2}</p>
+        </div>
+
+        {/* Gallery 03 */}
+        {project.gallery[2] && (
+          <div className="relative overflow-hidden rounded-2xl md:rounded-3xl border border-white/10 bg-neutral-950 transition-colors duration-300 hover:border-white/20">
+            <MediaPlaceholder
+              aspect="16/9"
+              label={`${project.title.toUpperCase()} // DETAIL III`}
+              className="!border-0"
+            />
+          </div>
         )}
       </section>
 
-      {/* 8. Final Red CTA Section */}
-      <section className="bg-brand-red py-32 text-brand-black text-center px-6 border-t-4 border-brand-white">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl md:text-6xl font-bold uppercase tracking-tight mb-12 leading-tight">
+      {/* 5. Previous/Next Project Links (Infinite Wrap-around Loop) */}
+      <section className="max-w-5xl mx-auto px-6 py-16 border-t border-white/10 flex justify-between items-center gap-6">
+        <Link
+          href={`/work/${prevProject.slug}`}
+          className="flex flex-col text-left group hover:text-brand-red transition-colors max-w-[45%]"
+        >
+          <span className="text-[10px] uppercase tracking-[0.3em] text-brand-grey mb-1 font-bold flex items-center gap-1">
+            <ArrowLeft className="w-3 h-3 group-hover:-translate-x-1 transition-transform" />
+            <span>PREVIOUS</span>
+          </span>
+          <span className="text-sm md:text-lg font-bold tracking-tight font-mono truncate uppercase">
+            {prevProject.title}
+          </span>
+        </Link>
+
+        <Link
+          href={`/work/${nextProject.slug}`}
+          className="flex flex-col text-right group hover:text-brand-red transition-colors max-w-[45%]"
+        >
+          <span className="text-[10px] uppercase tracking-[0.3em] text-brand-grey mb-1 font-bold flex items-center justify-end gap-1">
+            <span>NEXT PROJECT</span>
+            <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+          </span>
+          <span className="text-sm md:text-lg font-bold tracking-tight font-mono truncate uppercase">
+            {nextProject.title}
+          </span>
+        </Link>
+      </section>
+
+      {/* 6. Final Red CTA Section */}
+      <section className="bg-brand-red py-32 text-brand-black text-center px-6 border-t border-white/10">
+        <div className="max-w-4xl mx-auto space-y-8">
+          <h2 className="text-4xl md:text-6xl font-extrabold tracking-tight uppercase font-syne leading-tight">
             Interested in this framework?
           </h2>
-          <a
-            href={GOOGLE_CALENDAR_LINK}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block px-12 py-5 bg-brand-black text-brand-white hover:bg-brand-white hover:text-brand-black transition-all duration-500 text-sm font-bold tracking-widest uppercase rounded-xl"
-          >
-            {CONTENT.cta}
-          </a>
+          <p className="text-sm md:text-base font-bold tracking-widest uppercase font-mono max-w-xl mx-auto opacity-80">
+            Let's design a high-performance system for your corporate operations.
+          </p>
+          <div className="pt-4">
+            <a
+              href={GOOGLE_CALENDAR_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-3 px-12 py-5 bg-brand-black text-white hover:bg-white hover:text-black transition-all duration-500 text-xs font-bold rounded-xl uppercase tracking-widest min-h-[44px] min-w-[44px]"
+            >
+              <span>{CONTENT.cta.toUpperCase()}</span>
+              <Calendar className="w-4 h-4" />
+            </a>
+          </div>
         </div>
       </section>
     </article>

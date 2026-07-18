@@ -27,7 +27,7 @@ export default function TrustedBy() {
             return (
               <span
                 key={index}
-                className="text-xs md:text-sm font-bold uppercase tracking-widest text-center text-white/60 hover:text-white transition-all duration-300"
+                className="text-xs md:text-sm font-bold tracking-wider text-center text-white/60 hover:text-white transition-all duration-300"
               >
                 {partner.name}
               </span>

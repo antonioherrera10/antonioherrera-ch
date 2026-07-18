@@ -48,8 +48,8 @@ export default function Testimonials({ ids }: TestimonialsProps) {
           </p>
           <div className="border-t border-white/10 pt-4 flex justify-between items-center">
             <div>
-              <h4 className="text-xs font-bold uppercase tracking-widest text-white">{t.name}</h4>
-              <p className="text-[10px] text-ah-grey tracking-wider mt-1">{t.role}</p>
+              <h4 className="text-xs font-bold text-white">{t.name}</h4>
+              <p className="text-[10px] text-ah-grey tracking-[0.2em] uppercase mt-1">{t.role}</p>
             </div>
             <span className="text-[10px] uppercase text-white/20 select-none">#AH</span>
           </div>

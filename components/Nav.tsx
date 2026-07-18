@@ -27,13 +27,13 @@ export default function Nav() {
         <div className="flex items-center gap-4">
           <Link
             href="/"
-            className="text-xl font-bold tracking-tighter uppercase cursor-pointer hover:text-brand-grey transition-colors"
+            className="text-xl font-bold tracking-widest cursor-pointer hover:text-brand-grey transition-colors uppercase font-syne"
           >
             ANTONIO HERRERA
           </Link>
         </div>
 
-        {/* Centered Desktop Navigation (Design · Selected Work · Music · Boutique · About) */}
+        {/* Centered Desktop Navigation (DESIGN · SELECTED WORK · MUSIC · BOUTIQUE · ABOUT) */}
         <nav className="hidden md:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
           <Link
             href="/design"
@@ -41,7 +41,7 @@ export default function Nav() {
               pathname === "/design" ? "text-brand-white font-semibold" : "text-brand-grey hover:text-brand-white"
             }`}
           >
-            Design
+            DESIGN
           </Link>
           <Link
             href="/work"
@@ -49,7 +49,7 @@ export default function Nav() {
               pathname === "/work" ? "text-brand-white font-semibold" : "text-brand-grey hover:text-brand-white"
             }`}
           >
-            Selected Work
+            SELECTED WORK
           </Link>
           <Link
             href="/music"
@@ -57,7 +57,7 @@ export default function Nav() {
               pathname === "/music" ? "text-brand-white font-semibold" : "text-brand-grey hover:text-brand-white"
             }`}
           >
-            Music
+            MUSIC
           </Link>
           <a
             href={SOCIAL_LINKS.boutique}
@@ -65,7 +65,7 @@ export default function Nav() {
             rel="noopener noreferrer"
             className="text-xs font-bold tracking-widest uppercase text-brand-grey hover:text-brand-white transition-colors"
           >
-            Boutique
+            BOUTIQUE
           </a>
           <Link
             href="/about"
@@ -73,43 +73,17 @@ export default function Nav() {
               pathname === "/about" ? "text-brand-white font-semibold" : "text-brand-grey hover:text-brand-white"
             }`}
           >
-            About
+            ABOUT
           </Link>
         </nav>
 
-        {/* Desktop Right (Language Toggle + primary CTA button) */}
+        {/* Desktop Right (primary CTA button) */}
         <div className="hidden md:flex items-center gap-6">
-          {/* Language Toggle EN/DE */}
-          <div className="flex items-center gap-1 border border-brand-white/10 rounded-lg p-1 bg-brand-white/5">
-            <button
-              onClick={() => setLang("EN")}
-              aria-pressed={lang === "EN"}
-              className={`px-2 py-1 text-[10px] font-bold tracking-wider rounded transition-colors ${
-                lang === "EN"
-                  ? "bg-brand-white text-brand-black"
-                  : "text-brand-grey hover:text-brand-white"
-              }`}
-            >
-              EN
-            </button>
-            <button
-              onClick={() => setLang("DE")}
-              aria-pressed={lang === "DE"}
-              className={`px-2 py-1 text-[10px] font-bold tracking-wider rounded transition-colors ${
-                lang === "DE"
-                  ? "bg-brand-white text-brand-black"
-                  : "text-brand-grey hover:text-brand-white"
-              }`}
-            >
-              DE
-            </button>
-          </div>
-
           <a
             href={GOOGLE_CALENDAR_LINK}
             target="_blank"
             rel="noopener noreferrer"
-            className="px-5 py-2 bg-brand-white text-brand-black font-semibold text-xs hover:bg-brand-grey transition-colors rounded-lg uppercase tracking-wider font-mono text-center"
+            className="px-5 py-2 bg-brand-white text-brand-black font-semibold text-xs hover:bg-brand-grey transition-colors rounded-lg tracking-wider font-mono text-center"
           >
             {CONTENT.cta}
           </a>
@@ -140,7 +114,7 @@ export default function Nav() {
                   pathname === "/design" ? "text-brand-white font-semibold" : "text-brand-grey hover:text-brand-white"
                 }`}
               >
-                Design
+                DESIGN
               </Link>
               <Link
                 href="/work"
@@ -149,7 +123,7 @@ export default function Nav() {
                   pathname === "/work" ? "text-brand-white font-semibold" : "text-brand-grey hover:text-brand-white"
                 }`}
               >
-                Selected Work
+                SELECTED WORK
               </Link>
               <Link
                 href="/music"
@@ -158,7 +132,7 @@ export default function Nav() {
                   pathname === "/music" ? "text-brand-white font-semibold" : "text-brand-grey hover:text-brand-white"
                 }`}
               >
-                Music
+                MUSIC
               </Link>
               <a
                 href={SOCIAL_LINKS.boutique}
@@ -167,7 +141,7 @@ export default function Nav() {
                 onClick={() => setIsMenuOpen(false)}
                 className="text-sm font-bold tracking-widest uppercase text-brand-grey hover:text-brand-white transition-colors"
               >
-                Boutique
+                BOUTIQUE
               </a>
               <Link
                 href="/about"
@@ -176,34 +150,8 @@ export default function Nav() {
                   pathname === "/about" ? "text-brand-white font-semibold" : "text-brand-grey hover:text-brand-white"
                 }`}
               >
-                About
+                ABOUT
               </Link>
-
-              {/* Language toggle in mobile */}
-              <div className="flex items-center gap-1 border border-brand-white/10 rounded-lg p-1 bg-brand-white/5 mt-2">
-                <button
-                  onClick={() => setLang("EN")}
-                  aria-pressed={lang === "EN"}
-                  className={`px-3 py-1.5 text-xs font-bold tracking-wider rounded transition-colors ${
-                    lang === "EN"
-                      ? "bg-brand-white text-brand-black"
-                      : "text-brand-grey hover:text-brand-white"
-                  }`}
-                >
-                  EN
-                </button>
-                <button
-                  onClick={() => setLang("DE")}
-                  aria-pressed={lang === "DE"}
-                  className={`px-3 py-1.5 text-xs font-bold tracking-wider rounded transition-colors ${
-                    lang === "DE"
-                      ? "bg-brand-white text-brand-black"
-                      : "text-brand-grey hover:text-brand-white"
-                  }`}
-                >
-                  DE
-                </button>
-              </div>
             </div>
 
             <div className="text-center text-[10px] tracking-[0.3em] uppercase text-brand-grey font-medium py-2">
@@ -215,7 +163,7 @@ export default function Nav() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setIsMenuOpen(false)}
-              className="w-full py-4 bg-brand-white text-brand-black font-semibold text-center rounded-lg uppercase tracking-wider text-sm font-mono"
+              className="w-full py-4 bg-brand-white text-brand-black font-semibold text-center rounded-lg text-sm font-mono"
             >
               {CONTENT.cta}
             </a>

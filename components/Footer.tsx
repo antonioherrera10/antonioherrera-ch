@@ -10,11 +10,11 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-24">
           {/* Brand Info */}
           <div className="flex flex-col gap-6">
-            <div className="text-2xl font-bold tracking-tighter uppercase">
+            <div className="text-xl font-bold tracking-widest uppercase font-syne">
               ANTONIO HERRERA
             </div>
             <p className="text-[10px] tracking-[0.3em] uppercase text-brand-grey font-medium leading-relaxed">
-              Designer | Performing Artist
+              DESIGNER | PERFORMING ARTIST
             </p>
 
             <div className="flex flex-col gap-4 mt-4">
@@ -44,7 +44,7 @@ export default function Footer() {
                   href={SOCIAL_LINKS.spotify}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 bg-brand-white/5 border border-brand-white/10 rounded-full hover:bg-brand-lightblue hover:border-brand-lightblue transition-all duration-300 text-brand-white"
+                  className="p-2 bg-brand-white/5 border border-brand-white/10 rounded-full hover:bg-brand-red hover:border-brand-red transition-all duration-300 text-brand-white"
                   aria-label="Spotify"
                 >
                   <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -65,7 +65,7 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 className="text-sm font-bold tracking-widest uppercase hover:text-brand-red transition-colors"
               >
-                {CONTENT.footerShop}
+                BOUTIQUE
               </a>
               <ul className="flex flex-col gap-4 text-xs text-brand-grey tracking-widest uppercase">
                 <li>
@@ -75,7 +75,7 @@ export default function Footer() {
                     rel="noopener noreferrer"
                     className="hover:text-brand-white transition-colors"
                   >
-                    {CONTENT.footerCollections}
+                    COLLECTIONS
                   </a>
                 </li>
                 <li>
@@ -85,7 +85,7 @@ export default function Footer() {
                     rel="noopener noreferrer"
                     className="hover:text-brand-white transition-colors"
                   >
-                    {CONTENT.footerNewRoyal}
+                    THE NEW ROYAL
                   </a>
                 </li>
                 <li>
@@ -95,7 +95,7 @@ export default function Footer() {
                     rel="noopener noreferrer"
                     className="hover:text-brand-white transition-colors"
                   >
-                    {CONTENT.footerChangingEmotions}
+                    CHANGING EMOTIONS
                   </a>
                 </li>
                 <li>
@@ -105,41 +105,41 @@ export default function Footer() {
                     rel="noopener noreferrer"
                     className="hover:text-brand-white transition-colors"
                   >
-                    {CONTENT.footerSoftRoyal}
+                    SOFT ROYAL
                   </a>
                 </li>
               </ul>
             </div>
 
-            {/* Pages Column: Design · Selected Work · Music · About · Management · Boutique */}
+            {/* Pages Column: Design · Selected work · Music · About · Management · Boutique */}
             <div className="flex flex-col gap-8">
               <span className="text-sm font-bold tracking-widest uppercase text-brand-white">
-                Pages
+                PAGES
               </span>
               <ul className="flex flex-col gap-4 text-xs text-brand-grey tracking-widest uppercase">
                 <li>
                   <Link href="/design" className="hover:text-brand-white transition-colors">
-                    Design
+                    DESIGN
                   </Link>
                 </li>
                 <li>
                   <Link href="/work" className="hover:text-brand-white transition-colors">
-                    Selected Work
+                    SELECTED WORK
                   </Link>
                 </li>
                 <li>
                   <Link href="/music" className="hover:text-brand-white transition-colors">
-                    Music
+                    MUSIC
                   </Link>
                 </li>
                 <li>
                   <Link href="/about" className="hover:text-brand-white transition-colors">
-                    About
+                    ABOUT
                   </Link>
                 </li>
                 <li>
                   <Link href="/management" className="hover:text-brand-white transition-colors">
-                    Management
+                    MANAGEMENT
                   </Link>
                 </li>
                 <li>
@@ -149,7 +149,7 @@ export default function Footer() {
                     rel="noopener noreferrer"
                     className="hover:text-brand-white transition-colors"
                   >
-                    Boutique
+                    BOUTIQUE
                   </a>
                 </li>
               </ul>
@@ -158,34 +158,23 @@ export default function Footer() {
             {/* Booking Column */}
             <div className="flex flex-col gap-8">
               <span className="text-sm font-bold tracking-widest uppercase text-brand-white">
-                {CONTENT.footerBooking}
+                BOOKING &amp; MANAGEMENT
               </span>
               <ul className="flex flex-col gap-4 text-xs text-brand-grey tracking-widest uppercase">
                 <li>
-                  <Link href="/management" className="hover:text-brand-white transition-colors block leading-relaxed">
-                    Booking &amp; Management
+                  <Link href="/management#book" className="hover:text-brand-white transition-colors block leading-relaxed">
+                    BOOK PERFORMANCE
                   </Link>
                 </li>
                 <li>
-                  <a
-                    href={`mailto:${SOCIAL_LINKS.contactEmail}`}
-                    className="hover:text-brand-white transition-colors block leading-relaxed"
-                  >
-                    {CONTENT.footerContact}
-                  </a>
+                  <Link href="/management#contact" className="hover:text-brand-white transition-colors block leading-relaxed">
+                    CONTACT MANAGEMENT
+                  </Link>
                 </li>
                 <li>
-                  <a
-                    href={`mailto:${SOCIAL_LINKS.collaborationEmail}`}
-                    className="hover:text-brand-white transition-colors block leading-relaxed"
-                  >
-                    {CONTENT.footerBookConversation}
-                  </a>
-                </li>
-                <li>
-                  <span className="block leading-relaxed normal-case text-brand-lightblue font-medium">
-                    Management by HERR Design Collective GmbH
-                  </span>
+                  <Link href="/management#collaborate" className="hover:text-brand-white transition-colors block leading-relaxed">
+                    PROPOSE COLLABORATION
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -194,7 +183,7 @@ export default function Footer() {
 
         <div className="pt-12 border-t border-brand-white/10 flex flex-col md:flex-row justify-between items-center gap-8 text-[10px] tracking-[0.2em] uppercase text-brand-grey">
           <div className="text-center md:text-left flex flex-col gap-2">
-            <p>&copy; 2026 Antonio Herrera | HERR Design Collective GmbH. All rights reserved.</p>
+            <p>&copy; 2026 ANTONIO HERRERA | HERR Design Collective GmbH. All rights reserved.</p>
             <p className="text-brand-grey/60">
               Strategic Design &amp; Website by{" "}
               <a
@@ -210,13 +199,13 @@ export default function Footer() {
           </div>
           <div className="flex gap-8">
             <Link href="/terms" className="hover:text-brand-white transition-colors">
-              Terms of Service
+              TERMS OF SERVICE
             </Link>
             <Link href="/privacy" className="hover:text-brand-white transition-colors">
-              Privacy Policy
+              PRIVACY POLICY
             </Link>
             <Link href="/imprint" className="hover:text-brand-white transition-colors">
-              Imprint
+              IMPRINT
             </Link>
           </div>
         </div>

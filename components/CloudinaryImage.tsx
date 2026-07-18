@@ -50,6 +50,7 @@ export default function CloudinaryImage({
       height={useFill ? undefined : (height ?? 50)}
       style={style}
       unoptimized={true} // required for Static Export
+      referrerPolicy="no-referrer"
       {...props}
     />
   );
