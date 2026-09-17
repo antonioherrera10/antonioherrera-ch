@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
-import { CONTENT, GOOGLE_CALENDAR_LINK, SOCIAL_LINKS } from "@/lib/content";
+import { CONTENT, GOOGLE_CALENDAR_LINK } from "@/lib/content";
 
 export default function Nav() {
   const pathname = usePathname();
@@ -33,8 +33,15 @@ export default function Nav() {
           </Link>
         </div>
 
-        {/* Centered Desktop Navigation (DESIGN · SELECTED WORK · MUSIC · BOUTIQUE · ABOUT) */}
-        <nav className="hidden md:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
+        {/* Middle of Navigation Section: Designer | Performing Artist */}
+        <div className="hidden md:flex items-center absolute left-1/2 -translate-x-1/2 pointer-events-none select-none">
+          <span className="text-xs tracking-[0.2em] text-brand-grey font-medium whitespace-nowrap">
+            Designer | Performing Artist
+          </span>
+        </div>
+
+        {/* Right-aligned Desktop Navigation (DESIGN · MUSIC · ABOUT) */}
+        <nav className="hidden md:flex items-center gap-8">
           <Link
             href="/design"
             className={`text-xs font-bold tracking-widest uppercase transition-colors focus:outline-none ${
@@ -44,14 +51,6 @@ export default function Nav() {
             DESIGN
           </Link>
           <Link
-            href="/work"
-            className={`text-xs font-bold tracking-widest uppercase transition-colors focus:outline-none ${
-              pathname === "/work" ? "text-brand-white font-semibold" : "text-brand-grey hover:text-brand-white"
-            }`}
-          >
-            SELECTED WORK
-          </Link>
-          <Link
             href="/music"
             className={`text-xs font-bold tracking-widest uppercase transition-colors focus:outline-none ${
               pathname === "/music" ? "text-brand-white font-semibold" : "text-brand-grey hover:text-brand-white"
@@ -59,14 +58,6 @@ export default function Nav() {
           >
             MUSIC
           </Link>
-          <a
-            href={SOCIAL_LINKS.boutique}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-xs font-bold tracking-widest uppercase text-brand-grey hover:text-brand-white transition-colors"
-          >
-            BOUTIQUE
-          </a>
           <Link
             href="/about"
             className={`text-xs font-bold tracking-widest uppercase transition-colors focus:outline-none ${
@@ -76,18 +67,6 @@ export default function Nav() {
             ABOUT
           </Link>
         </nav>
-
-        {/* Desktop Right (primary CTA button) */}
-        <div className="hidden md:flex items-center gap-6">
-          <a
-            href={GOOGLE_CALENDAR_LINK}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-5 py-2 bg-brand-white text-brand-black font-semibold text-xs hover:bg-brand-grey transition-colors rounded-lg tracking-wider font-mono text-center"
-          >
-            {CONTENT.cta}
-          </a>
-        </div>
 
         {/* Mobile menu trigger */}
         <div className="flex items-center md:hidden">
@@ -117,15 +96,6 @@ export default function Nav() {
                 DESIGN
               </Link>
               <Link
-                href="/work"
-                onClick={() => setIsMenuOpen(false)}
-                className={`text-sm font-bold tracking-widest uppercase transition-colors ${
-                  pathname === "/work" ? "text-brand-white font-semibold" : "text-brand-grey hover:text-brand-white"
-                }`}
-              >
-                SELECTED WORK
-              </Link>
-              <Link
                 href="/music"
                 onClick={() => setIsMenuOpen(false)}
                 className={`text-sm font-bold tracking-widest uppercase transition-colors ${
@@ -134,15 +104,6 @@ export default function Nav() {
               >
                 MUSIC
               </Link>
-              <a
-                href={SOCIAL_LINKS.boutique}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => setIsMenuOpen(false)}
-                className="text-sm font-bold tracking-widest uppercase text-brand-grey hover:text-brand-white transition-colors"
-              >
-                BOUTIQUE
-              </a>
               <Link
                 href="/about"
                 onClick={() => setIsMenuOpen(false)}

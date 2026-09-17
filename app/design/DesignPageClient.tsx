@@ -1,12 +1,10 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { motion } from "motion/react";
 import {
   Calendar,
-  ChevronLeft,
-  ChevronRight,
   ArrowRight,
   ShieldCheck,
   Layers,
@@ -17,7 +15,6 @@ import { CONTENT, GOOGLE_CALENDAR_LINK } from "@/lib/content";
 import TrustedBy from "@/components/TrustedBy";
 import Testimonials from "@/components/Testimonials";
 import CloudinaryImage from "@/components/CloudinaryImage";
-import MediaPlaceholder from "@/components/MediaPlaceholder";
 
 // TODO: Move these design-specific copy keys to /lib/content.ts in a future iteration
 const TODO_DESIGN_COPY = {
@@ -59,29 +56,18 @@ interface Project {
 }
 
 interface DesignPageClientProps {
-  initialProjects: Project[];
+  initialProjects?: Project[];
 }
 
 export default function DesignPageClient({ initialProjects }: DesignPageClientProps) {
   const [email, setEmail] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const sliderRef = useRef<HTMLDivElement>(null);
 
   const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault();
     if (email.trim()) {
       setIsSubmitted(true);
       setEmail("");
-    }
-  };
-
-  const scrollSlider = (direction: "left" | "right") => {
-    if (sliderRef.current) {
-      const scrollAmount = 400;
-      sliderRef.current.scrollBy({
-        left: direction === "left" ? -scrollAmount : scrollAmount,
-        behavior: "smooth",
-      });
     }
   };
 
@@ -103,69 +89,82 @@ export default function DesignPageClient({ initialProjects }: DesignPageClientPr
     },
   ];
 
-  // Restrict to 3-4 cards for the WorkSlider
-  const displayProjects = initialProjects ? initialProjects.slice(0, 4) : [];
-
   return (
     <div className="w-full bg-black text-white selection:bg-ah-red selection:text-white">
       
       {/* 1. HERO SECTION (design offer) */}
-      <section id="hero" className="relative min-h-[85vh] flex flex-col justify-center items-center px-6 pt-32 pb-20 border-b border-white/10 overflow-hidden">
-        {/* Subtle background glow */}
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-ah-orange/5 rounded-full blur-[120px] pointer-events-none" />
-        
-        <div className="max-w-5xl mx-auto text-center space-y-8 relative z-10">
+      <section
+        id="hero"
+        className="relative min-h-[85vh] md:min-h-[90vh] flex items-end px-6 md:px-12 pb-16 md:pb-24 border-b border-white/10 overflow-hidden"
+      >
+        {/* Full-bleed background photo */}
+        <div className="absolute inset-0 z-0">
+          <CloudinaryImage
+            src="https://res.cloudinary.com/df6nnksd2/image/upload/v1779395158/ah/hero/antonio-herrera-hero-1.jpg"
+            alt="Antonio Herrera"
+            fill
+            eager
+            className="object-cover object-top sm:object-center w-full h-full opacity-60"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/30 pointer-events-none" />
+        </div>
+
+        <div className="max-w-4xl text-left space-y-6 relative z-10 w-full">
+          {/* Eyebrow Badge (Pill Tag) */}
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2 px-3 py-1 border border-white/10 rounded-full bg-white/5"
+            className="inline-flex items-center gap-2 px-3 py-1 border border-white/10 rounded-full bg-black/60 backdrop-blur-md"
           >
             <span className="w-1.5 h-1.5 rounded-full bg-ah-orange animate-pulse" />
-            <span className="text-[9px] uppercase tracking-[0.3em] text-ah-grey font-bold">
+            <span className="text-[9px] uppercase tracking-[0.3em] text-ah-grey font-bold font-mono">
               Bespoke Design Agency
             </span>
           </motion.div>
 
+          {/* Main Headline */}
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.15 }}
-            className="text-4xl md:text-7xl lg:text-8xl font-extrabold tracking-tight leading-none font-syne"
+            className="ah-hero-headline font-extrabold tracking-tight leading-[1.08] font-syne text-white"
           >
             Brand, web &amp; design consultation
           </motion.h1>
 
+          {/* Subheading */}
           <motion.p
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-base md:text-lg text-ah-grey max-w-2xl mx-auto leading-relaxed"
+            className="text-base sm:text-lg md:text-xl text-ah-grey max-w-2xl leading-relaxed"
           >
             Form and system aligned with intent. We construct highly calibrated brand frameworks, digital pipelines, and bespoke websites designed to amplify identity and drive clear conversion.
           </motion.p>
 
+          {/* Primary CTA button, Secondary CTA Button */}
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.45 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-6"
+            className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2"
           >
             <a
               href={GOOGLE_CALENDAR_LINK}
               target="_blank"
               rel="noopener noreferrer"
-              className="ah-button ah-button-primary w-full sm:w-auto hover:scale-[1.02] active:scale-[0.98] transition-transform inline-flex items-center justify-center gap-2 uppercase tracking-widest text-xs font-bold"
+              className="px-8 py-4 bg-white text-black text-xs font-bold rounded-xl hover:bg-brand-grey hover:text-black transition-all duration-300 inline-flex items-center justify-center gap-3 font-mono uppercase tracking-widest min-h-[44px]"
             >
-              <Calendar className="w-4 h-4" />
-              <span>SCHEDULE A CONSULTATION</span>
+              <span>PRIMARY CTA BUTTON</span>
+              <ArrowRight className="w-4 h-4" />
             </a>
-            <Link
-              href="/work"
-              className="ah-button ah-button-outline w-full sm:w-auto hover:scale-[1.02] active:scale-[0.98] transition-transform uppercase tracking-widest text-xs font-bold"
+            <a
+              href="#stakes"
+              className="px-8 py-4 bg-white/5 border border-white/15 text-white text-xs font-bold rounded-xl hover:bg-white hover:text-black hover:border-white transition-all duration-300 inline-flex items-center justify-center gap-3 font-mono uppercase tracking-widest min-h-[44px]"
             >
-              EXPLORE SELECTED WORK
-            </Link>
+              <span>SECONDARY CTA BUTTON</span>
+            </a>
           </motion.div>
         </div>
       </section>
@@ -174,12 +173,12 @@ export default function DesignPageClient({ initialProjects }: DesignPageClientPr
       <TrustedBy />
 
       {/* 3. STAKES SECTION (design framing: the cost of a weak brand and web presence) */}
-      <section id="stakes" className="relative bg-ah-red text-black py-24 md:py-32 w-full overflow-hidden border-b border-white/10">
+      <section id="stakes" className="relative bg-[#0a0a0a] text-white py-24 md:py-32 w-full overflow-hidden border-y border-white/10">
         <div className="max-w-5xl mx-auto px-6 text-center space-y-6">
-          <span className="text-[10px] uppercase tracking-[0.4em] text-black/60 font-bold font-mono">
+          <span className="text-[10px] uppercase tracking-[0.4em] text-brand-grey font-bold font-mono">
             {TODO_DESIGN_COPY.stakesLabel}
           </span>
-          <p className="text-3xl md:text-5xl lg:text-6xl font-extrabold font-syne leading-tight text-black">
+          <p className="text-xl md:text-3xl font-extrabold font-syne leading-tight text-white">
             {TODO_DESIGN_COPY.stakesText}
           </p>
         </div>
@@ -191,10 +190,10 @@ export default function DesignPageClient({ initialProjects }: DesignPageClientPr
           <span className="text-[10px] uppercase tracking-[0.4em] text-ah-orange font-bold font-mono">
             {TODO_DESIGN_COPY.vpLabel}
           </span>
-          <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight font-syne text-white">
+          <h2 className="ah-section-heading font-extrabold tracking-tight font-syne text-white">
             {TODO_DESIGN_COPY.vpTitle}
           </h2>
-          <p className="text-lg md:text-xl text-ah-grey max-w-2xl mx-auto leading-relaxed font-syne">
+          <p className="text-base md:text-lg text-ah-grey max-w-2xl mx-auto leading-relaxed font-syne">
             {TODO_DESIGN_COPY.vpText}
           </p>
         </div>
@@ -206,10 +205,10 @@ export default function DesignPageClient({ initialProjects }: DesignPageClientPr
           <span className="text-[10px] uppercase tracking-[0.4em] text-ah-rosa font-bold font-mono">
             {TODO_DESIGN_COPY.empathyLabel}
           </span>
-          <p className="text-lg md:text-xl text-ah-grey leading-relaxed font-syne">
+          <p className="text-base md:text-lg text-ah-grey leading-relaxed font-syne">
             {TODO_DESIGN_COPY.empathyText}
           </p>
-          <p className="font-syne italic text-xl md:text-3xl text-ah-rosa mt-6 font-medium">
+          <p className="font-syne italic text-lg md:text-xl text-ah-rosa mt-6 font-medium">
             {TODO_DESIGN_COPY.empathyAccent}
           </p>
         </div>
@@ -222,7 +221,7 @@ export default function DesignPageClient({ initialProjects }: DesignPageClientPr
             <span className="text-[10px] uppercase tracking-[0.4em] text-ah-grey">
               {TODO_DESIGN_COPY.guideLabel}
             </span>
-            <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight font-syne mt-2">
+            <h2 className="ah-section-heading font-extrabold tracking-tight font-syne mt-2">
               {TODO_DESIGN_COPY.guideTitle}
             </h2>
           </div>
@@ -233,7 +232,7 @@ export default function DesignPageClient({ initialProjects }: DesignPageClientPr
                 <span className="text-[10px] uppercase tracking-[0.3em] text-brand-lightblue font-bold font-mono">
                   {TODO_DESIGN_COPY.guideP1Label}
                 </span>
-                <h3 className="text-2xl md:text-3xl font-extrabold tracking-tight font-syne mt-4 mb-4 group-hover:text-brand-lightblue transition-colors">
+                <h3 className="ah-card-heading-lg font-extrabold tracking-tight font-syne mt-4 mb-4 group-hover:text-brand-lightblue transition-colors">
                   {TODO_DESIGN_COPY.guideP1Title}
                 </h3>
                 <p className="text-ah-grey leading-relaxed text-sm md:text-base mb-8">
@@ -254,7 +253,7 @@ export default function DesignPageClient({ initialProjects }: DesignPageClientPr
                 <span className="text-[10px] uppercase tracking-[0.3em] text-brand-red font-bold font-mono">
                   {TODO_DESIGN_COPY.guideP2Label}
                 </span>
-                <h3 className="text-2xl md:text-3xl font-extrabold tracking-tight font-syne mt-4 mb-4 group-hover:text-brand-red transition-colors">
+                <h3 className="ah-card-heading-lg font-extrabold tracking-tight font-syne mt-4 mb-4 group-hover:text-brand-red transition-colors">
                   {TODO_DESIGN_COPY.guideP2Title}
                 </h3>
                 <p className="text-ah-grey leading-relaxed text-sm md:text-base mb-8">
@@ -315,7 +314,7 @@ export default function DesignPageClient({ initialProjects }: DesignPageClientPr
         <div className="max-w-7xl mx-auto px-6 space-y-16">
           <div className="text-center max-w-2xl mx-auto space-y-4">
             <span className="text-[10px] uppercase tracking-[0.4em] text-ah-grey font-bold">05. CAPABILITIES</span>
-            <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight font-syne">
+            <h2 className="ah-section-heading font-extrabold tracking-tight font-syne">
               Design offers &amp; frameworks
             </h2>
             <p className="text-sm text-ah-grey leading-relaxed font-light">
@@ -338,7 +337,7 @@ export default function DesignPageClient({ initialProjects }: DesignPageClientPr
                     {offer.icon}
                   </div>
                   <div className="space-y-3">
-                    <h3 className="text-xl font-bold tracking-wide group-hover:text-ah-red transition-colors font-syne">
+                    <h3 className="ah-card-heading font-bold tracking-wide group-hover:text-ah-red transition-colors font-syne">
                       {offer.title}
                     </h3>
                     <p className="text-xs text-ah-grey leading-relaxed">
@@ -364,91 +363,12 @@ export default function DesignPageClient({ initialProjects }: DesignPageClientPr
         </div>
       </section>
 
-      {/* 10. WORK SLIDER (3-4 design cards → /work/{slug}, "All work" → /work, touch-swipeable) */}
-      {displayProjects.length > 0 && (
-        <section id="work-slider" className="py-24 border-b border-white/10 bg-black">
-          <div className="max-w-7xl mx-auto px-6 space-y-12">
-            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-6">
-              <div className="space-y-3">
-                <span className="text-[10px] uppercase tracking-[0.4em] text-ah-grey font-bold">06. SELECTED CASES</span>
-                <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight font-syne">
-                  Case studies &amp; blueprints
-                </h2>
-              </div>
-              <div className="flex gap-3">
-                <button
-                  onClick={() => scrollSlider("left")}
-                  className="p-3 rounded-full border border-white/10 bg-black text-white hover:bg-white hover:text-black transition-colors cursor-none"
-                  aria-label="Previous Slide"
-                >
-                  <ChevronLeft className="w-4 h-4" />
-                </button>
-                <button
-                  onClick={() => scrollSlider("right")}
-                  className="p-3 rounded-full border border-white/10 bg-black text-white hover:bg-white hover:text-black transition-colors cursor-none"
-                  aria-label="Next Slide"
-                >
-                  <ChevronRight className="w-4 h-4" />
-                </button>
-              </div>
-            </div>
-
-            {/* Horizontal Scroll Slider with Snap */}
-            <div
-              ref={sliderRef}
-              className="flex overflow-x-auto snap-x snap-mandatory gap-6 scrollbar-none pb-4 scroll-smooth"
-            >
-              {displayProjects.map((project) => (
-                <div
-                  key={project.slug}
-                  className="snap-start shrink-0 w-[85%] sm:w-[48%] md:w-[32%]"
-                >
-                  <Link
-                    href={`/work/${project.slug}`}
-                    className="group relative aspect-[4/3] w-full overflow-hidden bg-white/5 rounded-3xl block border border-white/10"
-                  >
-                    {/* Full-bleed Cover Image Placeholder */}
-                    <MediaPlaceholder
-                      aspect="4/5"
-                      label="MEDIA IN PRODUCTION"
-                      className="!border-0 w-full h-full"
-                    />
-
-                    {/* Overlaid Title and Discipline */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent p-6 flex flex-col justify-end transition-opacity duration-300">
-                      <div className="flex flex-col gap-1">
-                        <span className="text-[9px] uppercase tracking-[0.3em] text-ah-grey font-semibold font-mono">
-                          {project.discipline}
-                        </span>
-                        <h3 className="text-lg md:text-xl font-bold tracking-tight text-white group-hover:text-ah-red transition-colors font-syne">
-                          {project.title}
-                        </h3>
-                      </div>
-                    </div>
-                  </Link>
-                </div>
-              ))}
-            </div>
-
-            <div className="text-center pt-6">
-              <Link
-                href="/work"
-                className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-ah-grey hover:text-white transition-colors"
-              >
-                <span>ALL WORK</span>
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* 11. PLAN SECTION */}
+      {/* 10. PLAN SECTION */}
       <section id="plan" className="py-24 border-b border-white/10 bg-white/[0.005]">
         <div className="max-w-7xl mx-auto px-6 space-y-16">
           <div className="text-center max-w-2xl mx-auto space-y-4">
-            <span className="text-[10px] uppercase tracking-[0.4em] text-ah-grey font-bold">07. ENGAGEMENT PROCESS</span>
-            <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight font-syne">
+            <span className="text-[10px] uppercase tracking-[0.4em] text-ah-grey font-bold">06. ENGAGEMENT PROCESS</span>
+            <h2 className="ah-section-heading font-extrabold tracking-tight font-syne">
               Three-step delivery plan
             </h2>
           </div>
@@ -459,7 +379,7 @@ export default function DesignPageClient({ initialProjects }: DesignPageClientPr
                 01
               </div>
               <div className="space-y-2">
-                <h3 className="text-lg font-bold tracking-wide font-syne text-white">
+                <h3 className="ah-card-heading font-bold tracking-wide font-syne text-white">
                   Discover &amp; audit
                 </h3>
                 <p className="text-xs text-ah-grey leading-relaxed">
@@ -473,7 +393,7 @@ export default function DesignPageClient({ initialProjects }: DesignPageClientPr
                 02
               </div>
               <div className="space-y-2">
-                <h3 className="text-lg font-bold tracking-wide font-syne text-white">
+                <h3 className="ah-card-heading font-bold tracking-wide font-syne text-white">
                   Systemize &amp; blueprint
                 </h3>
                 <p className="text-xs text-ah-grey leading-relaxed">
@@ -487,7 +407,7 @@ export default function DesignPageClient({ initialProjects }: DesignPageClientPr
                 03
               </div>
               <div className="space-y-2">
-                <h3 className="text-lg font-bold tracking-wide font-syne text-white">
+                <h3 className="ah-card-heading font-bold tracking-wide font-syne text-white">
                   Implement &amp; launch
                 </h3>
                 <p className="text-xs text-ah-grey leading-relaxed">
@@ -499,7 +419,7 @@ export default function DesignPageClient({ initialProjects }: DesignPageClientPr
         </div>
       </section>
 
-      {/* 12. EXPLANATORY PARAGRAPH SECTION */}
+      {/* 11. EXPLANATORY PARAGRAPH SECTION */}
       <section id="explanatory" className="py-24 border-b border-white/10 bg-black">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <p className="text-[10px] uppercase tracking-[0.4em] text-ah-grey font-mono mb-8">
@@ -511,12 +431,12 @@ export default function DesignPageClient({ initialProjects }: DesignPageClientPr
         </div>
       </section>
 
-      {/* 13. MAGNET LEAD DIAGNOSTIC SECTION */}
+      {/* 12. MAGNET LEAD DIAGNOSTIC SECTION */}
       <section id="diagnostic" className="py-24 border-b border-white/10 bg-white/[0.01]">
         <div className="max-w-3xl mx-auto px-6 text-center space-y-10">
           <div className="space-y-4">
-            <span className="text-[10px] uppercase tracking-[0.4em] text-ah-grey font-bold">08. EVALUATION</span>
-            <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight font-syne">
+            <span className="text-[10px] uppercase tracking-[0.4em] text-ah-grey font-bold">07. EVALUATION</span>
+            <h2 className="ah-section-heading font-extrabold tracking-tight font-syne">
               The strategic design diagnostic
             </h2>
             <p className="text-sm text-ah-grey max-w-xl mx-auto leading-relaxed">
@@ -560,7 +480,7 @@ export default function DesignPageClient({ initialProjects }: DesignPageClientPr
       {/* 14. FINAL CTA SECTION */}
       <section id="final-cta" className="bg-ah-orange text-black py-24 md:py-32 border-b-4 border-white relative overflow-hidden">
         <div className="max-w-4xl mx-auto px-6 text-center space-y-8 relative z-10">
-          <h2 className="text-4xl md:text-7xl font-extrabold tracking-tight leading-none font-syne">
+          <h2 className="ah-banner-heading font-extrabold tracking-tight leading-none font-syne">
             Elevate your core expression.
           </h2>
           <p className="text-base md:text-xl text-black/80 max-w-2xl mx-auto leading-relaxed font-medium">

@@ -24,19 +24,20 @@ import TrustedBy from "@/components/TrustedBy";
 import MuxVideo from "@/components/MuxVideo";
 import Testimonials from "@/components/Testimonials";
 import MediaPlaceholder from "@/components/MediaPlaceholder";
+import CloudinaryImage from "@/components/CloudinaryImage";
 
 // TODO: Move these music-specific copy keys to /lib/content.ts in a future iteration
 const TODO_MUSIC_COPY = {
   stakesLabel: "01. THE STAKES",
-  stakesText: "FORGETTABLE LIVE MUSIC AND REPETITIVE EVENT PLATFORMS COST MORE THAN SPECTATOR ENGAGEMENT. THEY SILENTLY DRAIN AUTHENTIC ENERGY, MEMORABLE REPUTATION, AND GENUINE COMMUNITY CONNECTION.",
+  stakesText: "Forgettable live music and repetitive event platforms cost more than spectator engagement. They silently drain authentic energy, memorable reputation, and genuine community connection.",
   vpLabel: "02. VALUE PROPOSITION",
-  vpTitle: "PROFOUND ACOUSTIC RESONANCE",
+  vpTitle: "Profound acoustic resonance",
   vpText: "We systemize custom live vocal set curations and acoustic space alignments to restore absolute event presence, pure warmth, and electric human connection.",
   empathyLabel: "03. EMPATHY",
   empathyText: "I understand the heavy fatigue of empty, formulaic gatherings—where predictable background playlists and static structures slowly disconnect us. Real memory is built when we step past safe routines and choose to actively participate in the live resonance of music.",
   empathyAccent: "“You deserve vocal environments and musical moments that evoke pure, unforgettable vitality.”",
   guideLabel: "04. THE GUIDE",
-  guideTitle: "ANTONIO HERRERA",
+  guideTitle: "Antonio Herrera",
   guideP1Label: "Pillar One",
   guideP1Title: "The Strategic Designer",
   guideP1Text: "Redesigning physical layouts, custom client portfolios, and digital interfaces. We merge Swiss typographic alignment with high-performance responsive code to focus your digital presence.",
@@ -70,58 +71,77 @@ export default function MusicPageClient() {
     <div className="min-h-screen bg-black text-white selection:bg-ah-red selection:text-black">
       
       {/* 1. HERO SECTION (music offer) */}
-      <section id="hero" className="relative min-h-[90vh] flex flex-col justify-center items-center px-6 pt-32 pb-20 border-b border-white/10 overflow-hidden">
-        {/* Subtle background glow */}
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-ah-red/5 rounded-full blur-[120px] pointer-events-none" />
-        
-        <div className="max-w-5xl mx-auto text-center space-y-8 relative z-10">
+      <section
+        id="hero"
+        className="relative min-h-[85vh] md:min-h-[90vh] flex items-end px-6 md:px-12 pb-16 md:pb-24 border-b border-white/10 overflow-hidden"
+      >
+        {/* Full-bleed background photo */}
+        <div className="absolute inset-0 z-0">
+          <CloudinaryImage
+            src="https://res.cloudinary.com/df6nnksd2/image/upload/v1779395158/ah/hero/antonio-herrera-hero-1.jpg"
+            alt="Antonio Herrera"
+            fill
+            eager
+            className="object-cover object-top sm:object-center w-full h-full opacity-60"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/30 pointer-events-none" />
+        </div>
+
+        <div className="max-w-4xl text-left space-y-6 relative z-10 w-full">
+          {/* Eyebrow Badge (Pill Tag) */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="space-y-4"
+            transition={{ duration: 0.6 }}
+            className="inline-flex items-center gap-2 px-3 py-1 border border-white/10 rounded-full bg-black/60 backdrop-blur-md"
           >
-            <span className="text-[11px] uppercase tracking-[0.5em] text-ah-red font-bold font-mono">
+            <span className="w-1.5 h-1.5 rounded-full bg-ah-red animate-pulse" />
+            <span className="text-[9px] uppercase tracking-[0.3em] text-ah-grey font-bold font-mono">
               Performing Artist &amp; Event Curation
             </span>
-            <h1 className="text-5xl md:text-8xl font-extrabold tracking-tight font-syne leading-none">
-              {CONTENT.musicHeroTitle}
-            </h1>
           </motion.div>
 
-          <motion.p
+          {/* Main Headline */}
+          <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-base md:text-xl text-ah-grey max-w-3xl mx-auto leading-relaxed font-light font-syne"
+            transition={{ duration: 0.8, delay: 0.15 }}
+            className="ah-hero-headline font-extrabold tracking-tight leading-[1.08] font-syne text-white"
+          >
+            {CONTENT.musicHeroTitle}
+          </motion.h1>
+
+          {/* Subheading */}
+          <motion.p
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="text-base sm:text-lg md:text-xl text-ah-grey max-w-2xl leading-relaxed"
           >
             {CONTENT.musicHeroSub}
           </motion.p>
 
+          {/* Primary CTA button, Secondary CTA Button */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="flex flex-col sm:flex-row gap-6 justify-center items-center pt-8"
+            transition={{ duration: 0.6, delay: 0.45 }}
+            className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2"
           >
-            {/* Consultation CTA */}
             <a
               href={GOOGLE_CALENDAR_LINK}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-8 py-4 bg-ah-red text-black text-xs font-bold rounded-xl hover:bg-white hover:text-black transition-all duration-300 inline-flex items-center gap-3 w-full sm:w-auto justify-center font-mono uppercase tracking-widest"
+              className="px-8 py-4 bg-white text-black text-xs font-bold rounded-xl hover:bg-brand-grey hover:text-black transition-all duration-300 inline-flex items-center justify-center gap-3 font-mono uppercase tracking-widest min-h-[44px]"
             >
-              <Calendar className="w-4 h-4" />
-              <span>{CONTENT.cta.toUpperCase()}</span>
+              <span>PRIMARY CTA BUTTON</span>
+              <ArrowRight className="w-4 h-4" />
             </a>
-
-            {/* Ghost Watch the Showreel anchor */}
             <a
               href="#showreel"
-              className="px-8 py-4 bg-white/5 border border-white/10 text-white text-xs font-bold rounded-xl hover:bg-white hover:text-black hover:border-white transition-all duration-300 inline-flex items-center gap-3 w-full sm:w-auto justify-center font-mono uppercase tracking-widest"
+              className="px-8 py-4 bg-white/5 border border-white/15 text-white text-xs font-bold rounded-xl hover:bg-white hover:text-black hover:border-white transition-all duration-300 inline-flex items-center justify-center gap-3 font-mono uppercase tracking-widest min-h-[44px]"
             >
-              <Play className="w-4 h-4 fill-current" />
-              <span>WATCH THE SHOWREEL</span>
+              <span>SECONDARY CTA BUTTON</span>
             </a>
           </motion.div>
         </div>
@@ -135,7 +155,7 @@ export default function MusicPageClient() {
         <div className="max-w-7xl mx-auto px-6 space-y-12">
           <div className="text-center max-w-2xl mx-auto space-y-4">
             <span className="text-[10px] uppercase tracking-[0.4em] text-ah-grey">02. {CONTENT.showreelTitle}</span>
-            <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight font-syne">
+            <h2 className="ah-section-heading font-extrabold tracking-tight font-syne">
               Live Energy &amp; Motion
             </h2>
             <p className="text-sm text-ah-grey leading-relaxed font-light">
@@ -159,12 +179,12 @@ export default function MusicPageClient() {
       </section>
 
       {/* 4. STAKES SECTION (music framing) */}
-      <section id="stakes" className="relative bg-ah-red text-black py-24 md:py-32 w-full overflow-hidden border-b border-white/10">
+      <section id="stakes" className="relative bg-[#0a0a0a] text-white py-24 md:py-32 w-full overflow-hidden border-y border-white/10">
         <div className="max-w-5xl mx-auto px-6 text-center space-y-6">
-          <span className="text-[10px] uppercase tracking-[0.4em] text-black/60 font-bold font-mono">
+          <span className="text-[10px] uppercase tracking-[0.4em] text-brand-grey font-bold font-mono">
             {TODO_MUSIC_COPY.stakesLabel}
           </span>
-          <p className="text-3xl md:text-5xl lg:text-6xl font-extrabold tracking-tight font-syne leading-tight text-black">
+          <p className="text-xl md:text-3xl font-extrabold tracking-tight font-syne leading-tight text-white">
             {TODO_MUSIC_COPY.stakesText}
           </p>
         </div>
@@ -176,10 +196,10 @@ export default function MusicPageClient() {
           <span className="text-[10px] uppercase tracking-[0.4em] text-ah-red font-bold font-mono">
             {TODO_MUSIC_COPY.vpLabel}
           </span>
-          <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight font-syne text-white">
+          <h2 className="ah-section-heading font-extrabold tracking-tight font-syne text-white">
             {TODO_MUSIC_COPY.vpTitle}
           </h2>
-          <p className="text-lg md:text-xl text-ah-grey max-w-2xl mx-auto leading-relaxed font-syne">
+          <p className="text-base md:text-lg text-ah-grey max-w-2xl mx-auto leading-relaxed font-syne">
             {TODO_MUSIC_COPY.vpText}
           </p>
         </div>
@@ -191,10 +211,10 @@ export default function MusicPageClient() {
           <span className="text-[10px] uppercase tracking-[0.4em] text-ah-rosa font-bold font-mono">
             {TODO_MUSIC_COPY.empathyLabel}
           </span>
-          <p className="text-lg md:text-xl text-ah-grey leading-relaxed font-syne">
+          <p className="text-base md:text-lg text-ah-grey leading-relaxed font-syne">
             {TODO_MUSIC_COPY.empathyText}
           </p>
-          <p className="font-syne italic text-xl md:text-3xl text-brand-rosa mt-6 font-medium">
+          <p className="font-syne italic text-lg md:text-xl text-brand-rosa mt-6 font-medium">
             {TODO_MUSIC_COPY.empathyAccent}
           </p>
         </div>
@@ -207,7 +227,7 @@ export default function MusicPageClient() {
             <span className="text-[10px] uppercase tracking-[0.4em] text-ah-grey">
               {TODO_MUSIC_COPY.guideLabel}
             </span>
-            <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight font-syne mt-2">
+            <h2 className="ah-section-heading font-extrabold tracking-tight font-syne mt-2">
               {TODO_MUSIC_COPY.guideTitle}
             </h2>
           </div>
@@ -218,7 +238,7 @@ export default function MusicPageClient() {
                 <span className="text-[10px] uppercase tracking-[0.3em] text-brand-lightblue font-bold font-mono">
                   {TODO_MUSIC_COPY.guideP1Label}
                 </span>
-                <h3 className="text-2xl md:text-3xl font-extrabold tracking-tight font-syne mt-4 mb-4 group-hover:text-brand-lightblue transition-colors">
+                <h3 className="ah-card-heading-lg font-extrabold tracking-tight font-syne mt-4 mb-4 group-hover:text-brand-lightblue transition-colors">
                   {TODO_MUSIC_COPY.guideP1Title}
                 </h3>
                 <p className="text-ah-grey leading-relaxed text-sm md:text-base mb-8 font-light">
@@ -239,7 +259,7 @@ export default function MusicPageClient() {
                 <span className="text-[10px] uppercase tracking-[0.3em] text-brand-red font-bold font-mono">
                   {TODO_MUSIC_COPY.guideP2Label}
                 </span>
-                <h3 className="text-2xl md:text-3xl font-extrabold tracking-tight font-syne mt-4 mb-4 group-hover:text-brand-red transition-colors">
+                <h3 className="ah-card-heading-lg font-extrabold tracking-tight font-syne mt-4 mb-4 group-hover:text-brand-red transition-colors">
                   {TODO_MUSIC_COPY.guideP2Title}
                 </h3>
                 <p className="text-ah-grey leading-relaxed text-sm md:text-base mb-8 font-light">
@@ -263,7 +283,7 @@ export default function MusicPageClient() {
           <div className="max-w-7xl mx-auto px-6 space-y-12">
             <div className="text-center max-w-2xl mx-auto space-y-4">
               <span className="text-[10px] uppercase tracking-[0.4em] text-ah-grey font-bold">08. VIDEO REVIEWS</span>
-              <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight font-syne">
+              <h2 className="ah-section-heading font-extrabold tracking-tight font-syne">
                 Acoustic Reflections
               </h2>
               <p className="text-sm text-ah-grey leading-relaxed font-light">
@@ -296,7 +316,7 @@ export default function MusicPageClient() {
                     <span className="text-[9px] uppercase tracking-widest text-white/40 font-mono bg-black/40 px-2 py-0.5 rounded border border-white/5 inline-block mb-3">
                       Acoustic Reflection
                     </span>
-                    <h3 className="text-sm font-bold text-white tracking-wide font-syne">
+                    <h3 className="ah-card-heading-sm font-bold text-white tracking-wide font-syne">
                       {vt.title}
                     </h3>
                     <p className="text-[10px] text-ah-grey">
@@ -315,7 +335,7 @@ export default function MusicPageClient() {
         <div className="max-w-7xl mx-auto px-6 space-y-16">
           <div className="text-center max-w-2xl mx-auto space-y-4">
             <span className="text-[10px] uppercase tracking-[0.4em] text-ah-grey font-bold">09. WRITTEN RESONANCE</span>
-            <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight font-syne">
+            <h2 className="ah-section-heading font-extrabold tracking-tight font-syne">
               Audience &amp; Partner Voices
             </h2>
           </div>
@@ -375,7 +395,7 @@ export default function MusicPageClient() {
             <span className="text-[10px] uppercase tracking-[0.4em] text-ah-grey font-bold">
               11. LIVE EXPERIENCES
             </span>
-            <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight font-syne mt-2">
+            <h2 className="ah-section-heading font-extrabold tracking-tight font-syne mt-2">
               Performance Formats
             </h2>
             <p className="text-sm text-ah-grey font-light">
@@ -385,10 +405,10 @@ export default function MusicPageClient() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="p-8 md:p-12 border border-white/10 rounded-2xl bg-black hover:border-ah-red/30 transition-all flex flex-col justify-between group">
               <div>
-                <span className="text-3xl font-extrabold font-syne text-ah-red">
+                <span className="text-2xl font-extrabold font-syne text-ah-red">
                   01
                 </span>
-                <h3 className="text-xl md:text-2xl font-extrabold tracking-tight font-syne mt-4 mb-4">
+                <h3 className="ah-card-heading font-extrabold tracking-tight font-syne mt-4 mb-4">
                   Solo Performance
                 </h3>
                 <p className="text-ah-grey text-sm leading-relaxed mb-6 font-light">
@@ -407,10 +427,10 @@ export default function MusicPageClient() {
 
             <div className="p-8 md:p-12 border border-white/10 rounded-2xl bg-black hover:border-ah-red/30 transition-all flex flex-col justify-between group">
               <div>
-                <span className="text-3xl font-extrabold font-syne text-ah-red">
+                <span className="text-2xl font-extrabold font-syne text-ah-red">
                   02
                 </span>
-                <h3 className="text-xl md:text-2xl font-extrabold tracking-tight font-syne mt-4 mb-4">
+                <h3 className="ah-card-heading font-extrabold tracking-tight font-syne mt-4 mb-4">
                   Band Experience
                 </h3>
                 <p className="text-ah-grey text-sm leading-relaxed mb-6 font-light">
@@ -429,10 +449,10 @@ export default function MusicPageClient() {
 
             <div className="p-8 md:p-12 border border-white/10 rounded-2xl bg-black hover:border-ah-red/30 transition-all flex flex-col justify-between group">
               <div>
-                <span className="text-3xl font-extrabold font-syne text-ah-red">
+                <span className="text-2xl font-extrabold font-syne text-ah-red">
                   03
                 </span>
-                <h3 className="text-xl md:text-2xl font-extrabold tracking-tight font-syne mt-4 mb-4">
+                <h3 className="ah-card-heading font-extrabold tracking-tight font-syne mt-4 mb-4">
                   Event Co-Creation
                 </h3>
                 <p className="text-ah-grey text-sm leading-relaxed mb-6 font-light">
@@ -458,7 +478,7 @@ export default function MusicPageClient() {
           <div className="max-w-7xl mx-auto px-6 space-y-16">
             <div className="text-center max-w-2xl mx-auto space-y-4">
               <span className="text-[10px] uppercase tracking-[0.4em] text-ah-grey font-bold">13. SELECTED CASE TAPES</span>
-              <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight font-syne">
+              <h2 className="ah-section-heading font-extrabold tracking-tight font-syne">
                 Performances &amp; Audio Projects
               </h2>
             </div>
@@ -485,7 +505,7 @@ export default function MusicPageClient() {
                       <span>{project.year}</span>
                     </div>
                     <div className="space-y-3">
-                      <h3 className="text-lg font-bold tracking-wide group-hover:text-ah-red transition-colors font-syne">
+                      <h3 className="ah-card-heading font-bold tracking-wide group-hover:text-ah-red transition-colors font-syne">
                         {project.title}
                       </h3>
                       <p className="text-xs text-ah-grey leading-relaxed font-light">
@@ -510,7 +530,7 @@ export default function MusicPageClient() {
         <div className="max-w-7xl mx-auto px-6 space-y-16">
           <div className="text-center max-w-2xl mx-auto space-y-4">
             <span className="text-[10px] uppercase tracking-[0.4em] text-ah-grey font-bold">14. ENGAGEMENT PROCESS</span>
-            <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight font-syne">
+            <h2 className="ah-section-heading font-extrabold tracking-tight font-syne">
               Three-step engagement plan
             </h2>
           </div>
@@ -521,7 +541,7 @@ export default function MusicPageClient() {
                 01
               </div>
               <div className="space-y-2">
-                <h3 className="text-lg font-bold tracking-wide font-syne text-white">
+                <h3 className="ah-card-heading font-bold tracking-wide font-syne text-white">
                   Discover &amp; scope
                 </h3>
                 <p className="text-xs text-ah-grey leading-relaxed font-light">
@@ -535,7 +555,7 @@ export default function MusicPageClient() {
                 02
               </div>
               <div className="space-y-2">
-                <h3 className="text-lg font-bold tracking-wide font-syne text-white">
+                <h3 className="ah-card-heading font-bold tracking-wide font-syne text-white">
                   Design &amp; rehearse
                 </h3>
                 <p className="text-xs text-ah-grey leading-relaxed font-light">
@@ -549,7 +569,7 @@ export default function MusicPageClient() {
                 03
               </div>
               <div className="space-y-2">
-                <h3 className="text-lg font-bold tracking-wide font-syne text-white">
+                <h3 className="ah-card-heading font-bold tracking-wide font-syne text-white">
                   Direct &amp; resonate
                 </h3>
                 <p className="text-xs text-ah-grey leading-relaxed font-light">
@@ -578,7 +598,7 @@ export default function MusicPageClient() {
         <div className="max-w-3xl mx-auto px-6 text-center space-y-10">
           <div className="space-y-4">
             <span className="text-[10px] uppercase tracking-[0.4em] text-ah-grey font-bold">16. PREMIUM AUDIO</span>
-            <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight font-syne">
+            <h2 className="ah-section-heading font-extrabold tracking-tight font-syne">
               Acoustic sessions &amp; unreleased tracks
             </h2>
             <p className="text-sm text-ah-grey max-w-xl mx-auto leading-relaxed font-light">
@@ -620,12 +640,12 @@ export default function MusicPageClient() {
       </section>
 
       {/* 17. FINAL CTA */}
-      <section id="final-cta" className="bg-ah-red text-black py-24 md:py-32 border-b-4 border-white relative overflow-hidden">
+      <section id="final-cta" className="bg-[#0a0a0a] text-white py-24 md:py-32 border-t border-b border-white/10 relative overflow-hidden">
         <div className="max-w-4xl mx-auto px-6 text-center space-y-8 relative z-10">
-          <h2 className="text-4xl md:text-7xl font-extrabold tracking-tight leading-none font-syne">
+          <h2 className="ah-banner-heading font-extrabold tracking-tight leading-none font-syne text-white">
             {CONTENT.unlockTitle}
           </h2>
-          <p className="text-base md:text-xl text-black/80 max-w-2xl mx-auto leading-relaxed font-medium">
+          <p className="text-base md:text-xl text-brand-grey max-w-2xl mx-auto leading-relaxed font-medium">
             Let music transform your space, capture your audience, and build genuine human rhythm.
           </p>
           <div className="pt-6">
@@ -633,17 +653,17 @@ export default function MusicPageClient() {
               href={GOOGLE_CALENDAR_LINK}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-8 py-4 bg-black text-white text-xs font-bold rounded-xl hover:bg-white hover:text-black transition-all duration-300 inline-flex items-center gap-3 font-mono uppercase tracking-widest"
+              className="px-8 py-4 bg-white text-black text-xs font-bold rounded-xl hover:bg-brand-grey hover:text-black transition-all duration-300 inline-flex items-center gap-3 font-mono uppercase tracking-widest"
             >
               <span>{CONTENT.cta.toUpperCase()}</span>
               <ArrowRight className="w-4 h-4" />
             </a>
           </div>
-          <div className="pt-8 text-xs font-mono text-black/60">
+          <div className="pt-8 text-xs font-mono text-brand-grey/70">
             For partnerships, bookings, and corporate management, please view our{" "}
             <Link
               href="/management"
-              className="underline font-bold hover:text-black transition-colors"
+              className="underline font-bold hover:text-white transition-colors"
             >
               management page
             </Link>

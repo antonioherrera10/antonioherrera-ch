@@ -56,75 +56,13 @@ export default function Footer() {
           </div>
 
           {/* Navigation Columns */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 lg:col-span-3 gap-12 lg:gap-24">
-            {/* Boutique Shop */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:col-span-3 gap-8 sm:gap-12 max-w-md w-full ml-auto justify-self-end">
+            {/* Pages Column: Design · Music · About · Management */}
             <div className="flex flex-col gap-8">
-              <a
-                href={SOCIAL_LINKS.boutique}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-sm font-bold tracking-widest uppercase hover:text-brand-red transition-colors"
-              >
-                BOUTIQUE
-              </a>
-              <ul className="flex flex-col gap-4 text-xs text-brand-grey tracking-widest uppercase">
-                <li>
-                  <a
-                    href="https://antonioherrera.shop/collections"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-brand-white transition-colors"
-                  >
-                    COLLECTIONS
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://antonioherrera.shop/collections/the-new-royal"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-brand-white transition-colors"
-                  >
-                    THE NEW ROYAL
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://antonioherrera.shop/collections/frontpage"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-brand-white transition-colors"
-                  >
-                    CHANGING EMOTIONS
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://zigzagzurich.com/products/artist-bedding-soft-royal-by-antonio-herrera/?srsltid=AfmBOopGXi-WRvKEhWIiJdKsopCa0oKQPhGfJo_klOeazaj757uaaCzR"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-brand-white transition-colors"
-                  >
-                    SOFT ROYAL
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            {/* Pages Column: Design · Selected work · Music · About · Management · Boutique */}
-            <div className="flex flex-col gap-8">
-              <span className="text-sm font-bold tracking-widest uppercase text-brand-white">
-                PAGES
-              </span>
               <ul className="flex flex-col gap-4 text-xs text-brand-grey tracking-widest uppercase">
                 <li>
                   <Link href="/design" className="hover:text-brand-white transition-colors">
                     DESIGN
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/work" className="hover:text-brand-white transition-colors">
-                    SELECTED WORK
                   </Link>
                 </li>
                 <li>
@@ -142,33 +80,15 @@ export default function Footer() {
                     MANAGEMENT
                   </Link>
                 </li>
-                <li>
-                  <a
-                    href={SOCIAL_LINKS.boutique}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-brand-white transition-colors"
-                  >
-                    BOUTIQUE
-                  </a>
-                </li>
               </ul>
             </div>
 
             {/* Booking Column */}
             <div className="flex flex-col gap-8">
-              <span className="text-sm font-bold tracking-widest uppercase text-brand-white">
-                BOOKING &amp; MANAGEMENT
-              </span>
               <ul className="flex flex-col gap-4 text-xs text-brand-grey tracking-widest uppercase">
                 <li>
                   <Link href="/management#book" className="hover:text-brand-white transition-colors block leading-relaxed">
                     BOOK PERFORMANCE
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/management#contact" className="hover:text-brand-white transition-colors block leading-relaxed">
-                    CONTACT MANAGEMENT
                   </Link>
                 </li>
                 <li>

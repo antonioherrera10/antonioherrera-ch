@@ -19,25 +19,31 @@ import {
 } from "@/lib/content";
 import MediaPlaceholder from "@/components/MediaPlaceholder";
 import Testimonials from "@/components/Testimonials";
+import CloudinaryImage from "@/components/CloudinaryImage";
 
 export default function AboutPageClient() {
   return (
     <div className="w-full bg-black text-white selection:bg-ah-red selection:text-white">
       
       {/* 1. HERO SECTION (full-width portrait image + h1 "About" & name lockup) */}
-      <section id="hero" className="relative h-[80vh] md:h-[90vh] flex items-end px-6 pb-16 md:pb-24 border-b border-white/10 overflow-hidden">
-        {/* Full-bleed portrait placeholder */}
+      <section
+        id="hero"
+        className="relative min-h-[85vh] md:min-h-[90vh] flex items-end px-6 md:px-12 pb-16 md:pb-24 border-b border-white/10 overflow-hidden"
+      >
+        {/* Full-bleed background photo */}
         <div className="absolute inset-0 z-0">
-          <MediaPlaceholder
-            aspect="4/5"
-            label="PORTRAIT IN PRODUCTION"
-            className="w-full h-full !rounded-none !border-0 bg-neutral-950/80"
+          <CloudinaryImage
+            src="https://res.cloudinary.com/df6nnksd2/image/upload/v1779395158/ah/hero/antonio-herrera-hero-1.jpg"
+            alt="Antonio Herrera"
+            fill
+            eager
+            className="object-cover object-top sm:object-center w-full h-full opacity-60"
           />
-          {/* Bottom gradient overlay to transition smoothly */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/30 pointer-events-none" />
         </div>
 
-        <div className="max-w-7xl mx-auto w-full relative z-10 space-y-4">
+        <div className="max-w-4xl text-left space-y-6 relative z-10 w-full">
+          {/* Eyebrow Badge (Pill Tag) */}
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
@@ -45,26 +51,53 @@ export default function AboutPageClient() {
             className="inline-flex items-center gap-2 px-3 py-1 border border-white/10 rounded-full bg-black/60 backdrop-blur-md"
           >
             <span className="w-1.5 h-1.5 rounded-full bg-ah-red animate-pulse" />
-            <span className="text-[9px] uppercase tracking-[0.3em] text-ah-grey font-bold">
+            <span className="text-[9px] uppercase tracking-[0.3em] text-ah-grey font-bold font-mono">
               The Portrait &amp; Identity
             </span>
           </motion.div>
 
-          <motion.div
+          {/* Main Headline */}
+          <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.15 }}
-            className="space-y-2"
+            className="ah-hero-headline font-extrabold tracking-tight leading-[1.08] font-syne text-white"
           >
-            {/* H1 "About" with name lockup */}
-            <h1 className="text-5xl md:text-8xl lg:text-9xl font-extrabold tracking-tight leading-none font-syne">
-              About
-            </h1>
-            <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-xs md:text-sm uppercase tracking-[0.3em] font-mono text-ah-red font-bold">
-              <span>ANTONIO HERRERA</span>
-              <span className="hidden sm:inline text-white/20">|</span>
-              <span className="text-white">Designer &amp; Performing Artist</span>
-            </div>
+            About Antonio Herrera
+          </motion.h1>
+
+          {/* Subheading */}
+          <motion.p
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="text-base sm:text-lg md:text-xl text-ah-grey max-w-2xl leading-relaxed"
+          >
+            Designer &amp; Performing Artist creating calibrated visual systems, strategic brand frameworks, and transformative musical experiences.
+          </motion.p>
+
+          {/* Primary CTA button, Secondary CTA Button */}
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.45 }}
+            className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2"
+          >
+            <a
+              href={GOOGLE_CALENDAR_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-8 py-4 bg-white text-black text-xs font-bold rounded-xl hover:bg-brand-grey hover:text-black transition-all duration-300 inline-flex items-center justify-center gap-3 font-mono uppercase tracking-widest min-h-[44px]"
+            >
+              <span>PRIMARY CTA BUTTON</span>
+              <ArrowRight className="w-4 h-4" />
+            </a>
+            <a
+              href="#bio"
+              className="px-8 py-4 bg-white/5 border border-white/15 text-white text-xs font-bold rounded-xl hover:bg-white hover:text-black hover:border-white transition-all duration-300 inline-flex items-center justify-center gap-3 font-mono uppercase tracking-widest min-h-[44px]"
+            >
+              <span>SECONDARY CTA BUTTON</span>
+            </a>
           </motion.div>
         </div>
       </section>
@@ -76,7 +109,7 @@ export default function AboutPageClient() {
             <span className="text-[10px] uppercase tracking-[0.4em] text-ah-grey font-mono block">
               01. The Narrative
             </span>
-            <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight font-syne text-white">
+            <h2 className="ah-section-heading font-extrabold tracking-tight font-syne text-white">
               My conviction &amp; path
             </h2>
           </div>
@@ -111,7 +144,7 @@ export default function AboutPageClient() {
             <span className="text-[10px] uppercase tracking-[0.4em] text-ah-grey font-mono">
               02. Curriculum Vitae
             </span>
-            <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight font-syne">
+            <h2 className="ah-section-heading font-extrabold tracking-tight font-syne">
               Professional biography &amp; record
             </h2>
             <p className="text-sm text-ah-grey font-light">
@@ -125,7 +158,7 @@ export default function AboutPageClient() {
             <div className="space-y-8">
               <div className="flex items-center gap-3 border-b border-white/10 pb-4">
                 <GraduationCap className="w-5 h-5 text-ah-orange" />
-                <h3 className="text-xl font-bold tracking-wide font-syne text-white">
+                <h3 className="ah-card-heading font-bold tracking-wide font-syne text-white">
                   Academic credentials
                 </h3>
               </div>
@@ -163,7 +196,7 @@ export default function AboutPageClient() {
             <div className="space-y-8">
               <div className="flex items-center gap-3 border-b border-white/10 pb-4">
                 <Briefcase className="w-5 h-5 text-ah-red" />
-                <h3 className="text-xl font-bold tracking-wide font-syne text-white">
+                <h3 className="ah-card-heading font-bold tracking-wide font-syne text-white">
                   Practice highlights
                 </h3>
               </div>
@@ -203,7 +236,7 @@ export default function AboutPageClient() {
           <div className="max-w-4xl mx-auto pt-8 border-t border-white/10 space-y-8">
             <div className="flex items-center gap-3">
               <Award className="w-5 h-5 text-ah-rosa" />
-              <h3 className="text-lg font-bold tracking-wide font-syne text-white">
+              <h3 className="ah-card-heading-sm font-bold tracking-wide font-syne text-white">
                 Core specializations
               </h3>
             </div>
@@ -232,7 +265,7 @@ export default function AboutPageClient() {
             <span className="text-[10px] uppercase tracking-[0.4em] text-ah-grey font-mono">
               03. Endorsements
             </span>
-            <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight font-syne">
+            <h2 className="ah-section-heading font-extrabold tracking-tight font-syne">
               Curated alliances
             </h2>
           </div>
@@ -243,12 +276,12 @@ export default function AboutPageClient() {
       </section>
 
       {/* 5. FINAL CTA SECTION */}
-      <section id="final-cta" className="bg-ah-red text-black py-24 md:py-32 border-b-4 border-white relative overflow-hidden">
+      <section id="final-cta" className="bg-[#0a0a0a] text-white py-24 md:py-32 border-t border-b border-white/10 relative overflow-hidden">
         <div className="max-w-4xl mx-auto px-6 text-center space-y-8 relative z-10">
-          <h2 className="text-4xl md:text-7xl font-extrabold tracking-tight leading-none font-syne">
+          <h2 className="ah-banner-heading font-extrabold tracking-tight leading-none font-syne text-white">
             Align your trajectory.
           </h2>
-          <p className="text-base md:text-xl text-black/80 max-w-2xl mx-auto leading-relaxed font-medium">
+          <p className="text-base md:text-xl text-brand-grey max-w-2xl mx-auto leading-relaxed font-medium">
             Let us design uncompromised visual systems and construct profound musical experiences starting today.
           </p>
           <div className="pt-6">
@@ -256,7 +289,7 @@ export default function AboutPageClient() {
               href={GOOGLE_CALENDAR_LINK}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-8 py-4 bg-black text-white text-xs font-bold rounded-xl hover:bg-white hover:text-black transition-all duration-300 inline-flex items-center gap-3 font-mono cursor-none uppercase tracking-widest"
+              className="px-8 py-4 bg-white text-black text-xs font-bold rounded-xl hover:bg-brand-grey hover:text-black transition-all duration-300 inline-flex items-center gap-3 font-mono cursor-none uppercase tracking-widest"
             >
               <span>SCHEDULE A CONSULTATION</span>
               <ArrowRight className="w-4 h-4" />

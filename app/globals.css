@@ -24,6 +24,28 @@
   /* Font mapping using --font-syne loaded via next/font/google */
   --font-syne: var(--font-syne), sans-serif;
   --font-sans: var(--font-syne), sans-serif;
+
+  /* Hero Headline Typography Scale (Scaled down by 10% from prior calibration) */
+  --ah-hero-h1-mobile: 1.4625rem;
+  --ah-hero-h1-sm: 2.3625rem;
+  --ah-hero-h1-md: 2.835rem;
+  --ah-hero-h1-lg: 3.78rem;
+
+  /* Section Headings H2 (-40%) */
+  --ah-h2-mobile: 1.125rem;
+  --ah-h2-md: 1.8rem;
+
+  /* Banner Headings H2 (-40%) */
+  --ah-banner-h2-mobile: 1.35rem;
+  --ah-banner-h2-md: 2.7rem;
+
+  /* Card Headings H3 (-40%) */
+  --ah-h3-lg-mobile: 0.9rem;
+  --ah-h3-lg-md: 1.125rem;
+  --ah-h3-base-mobile: 0.75rem;
+  --ah-h3-base-md: 0.9rem;
+  --ah-h3-sm-mobile: 0.675rem;
+  --ah-h3-sm-md: 0.75rem;
 }
 
 @layer base {
@@ -51,6 +73,99 @@
 }
 
 /* Custom Display Typographies and Labels */
+.ah-hero-headline {
+  font-size: 1.4625rem;
+  line-height: 1.08;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+@media (min-width: 640px) {
+  .ah-hero-headline {
+    font-size: 2.3625rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .ah-hero-headline {
+    font-size: 2.835rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .ah-hero-headline {
+    font-size: 3.78rem;
+  }
+}
+
+/* Section Headings H2 */
+.ah-section-heading {
+  font-size: 1.125rem;
+  line-height: 1.2;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+@media (min-width: 768px) {
+  .ah-section-heading {
+    font-size: 1.8rem;
+  }
+}
+
+/* Banner Headings H2 */
+.ah-banner-heading {
+  font-size: 1.35rem;
+  line-height: 1.1;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+@media (min-width: 768px) {
+  .ah-banner-heading {
+    font-size: 2.7rem;
+  }
+}
+
+/* Card Headings H3 */
+.ah-card-heading-lg {
+  font-size: 0.9rem;
+  line-height: 1.3;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+@media (min-width: 768px) {
+  .ah-card-heading-lg {
+    font-size: 1.125rem;
+  }
+}
+
+.ah-card-heading {
+  font-size: 0.75rem;
+  line-height: 1.35;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+@media (min-width: 768px) {
+  .ah-card-heading {
+    font-size: 0.9rem;
+  }
+}
+
+.ah-card-heading-sm {
+  font-size: 0.675rem;
+  line-height: 1.4;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+@media (min-width: 768px) {
+  .ah-card-heading-sm {
+    font-size: 0.75rem;
+  }
+}
+
 .ah-title {
   font-weight: 700;
   letter-spacing: -0.01em;

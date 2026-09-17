@@ -58,7 +58,6 @@ export default function RootLayout({
       SOCIAL_LINKS.instagram,
       SOCIAL_LINKS.youtube,
       SOCIAL_LINKS.spotify,
-      SOCIAL_LINKS.boutique,
     ],
   };
 

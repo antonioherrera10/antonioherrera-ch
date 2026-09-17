@@ -12,6 +12,7 @@ import {
   Calendar,
 } from "lucide-react";
 import { SOCIAL_LINKS, GOOGLE_CALENDAR_LINK } from "@/lib/content";
+import CloudinaryImage from "@/components/CloudinaryImage";
 
 export default function ManagementPageClient() {
   // Construct email links with subjects
@@ -88,41 +89,80 @@ export default function ManagementPageClient() {
   return (
     <div className="w-full bg-black text-white selection:bg-ah-red selection:text-white">
       
-      {/* 1. HEADER BLOCK */}
+      {/* 1. HERO SECTION */}
       <section
-        id="header-block"
-        className="max-w-7xl mx-auto px-6 pt-16 md:pt-24 pb-12 border-b border-white/10 text-center"
+        id="hero"
+        className="relative min-h-[85vh] md:min-h-[90vh] flex items-end px-6 md:px-12 pb-16 md:pb-24 border-b border-white/10 overflow-hidden"
       >
-        <div className="space-y-4 max-w-4xl mx-auto">
+        {/* Full-bleed background photo */}
+        <div className="absolute inset-0 z-0">
+          <CloudinaryImage
+            src="https://res.cloudinary.com/df6nnksd2/image/upload/v1779395158/ah/hero/antonio-herrera-hero-1.jpg"
+            alt="Antonio Herrera"
+            fill
+            eager
+            className="object-cover object-top sm:object-center w-full h-full opacity-60"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/30 pointer-events-none" />
+        </div>
+
+        <div className="max-w-4xl text-left space-y-6 relative z-10 w-full">
+          {/* Eyebrow Badge (Pill Tag) */}
           <motion.div
-            initial={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-3 py-1 border border-white/10 rounded-full bg-white/[0.02]"
+            transition={{ duration: 0.6 }}
+            className="inline-flex items-center gap-2 px-3 py-1 border border-white/10 rounded-full bg-black/60 backdrop-blur-md"
           >
-            <span className="w-1.5 h-1.5 rounded-full bg-ah-red" />
-            <span className="text-[10px] uppercase tracking-[0.3em] text-ah-grey font-bold font-mono">
+            <span className="w-1.5 h-1.5 rounded-full bg-ah-red animate-pulse" />
+            <span className="text-[9px] uppercase tracking-[0.3em] text-ah-grey font-bold font-mono">
               Management
             </span>
           </motion.div>
 
+          {/* Main Headline */}
           <motion.h1
-            initial={{ opacity: 0, y: 15 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-4xl md:text-7xl lg:text-8xl font-extrabold tracking-tight leading-none font-syne text-white"
+            transition={{ duration: 0.8, delay: 0.15 }}
+            className="ah-hero-headline font-extrabold tracking-tight leading-[1.08] font-syne text-white"
           >
             Professional contact
           </motion.h1>
 
+          {/* Subheading */}
           <motion.p
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-sm md:text-md uppercase tracking-[0.15em] font-mono text-ah-grey font-light max-w-2xl mx-auto"
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="text-base sm:text-lg md:text-xl text-ah-grey max-w-2xl leading-relaxed"
           >
             Booking, management and press for Antonio Herrera.
           </motion.p>
+
+          {/* Primary CTA button, Secondary CTA Button */}
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.45 }}
+            className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2"
+          >
+            <a
+              href={GOOGLE_CALENDAR_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-8 py-4 bg-white text-black text-xs font-bold rounded-xl hover:bg-brand-grey hover:text-black transition-all duration-300 inline-flex items-center justify-center gap-3 font-mono uppercase tracking-widest min-h-[44px]"
+            >
+              <span>PRIMARY CTA BUTTON</span>
+              <ArrowRight className="w-4 h-4" />
+            </a>
+            <a
+              href="#collaborate"
+              className="px-8 py-4 bg-white/5 border border-white/15 text-white text-xs font-bold rounded-xl hover:bg-white hover:text-black hover:border-white transition-all duration-300 inline-flex items-center justify-center gap-3 font-mono uppercase tracking-widest min-h-[44px]"
+            >
+              <span>SECONDARY CTA BUTTON</span>
+            </a>
+          </motion.div>
         </div>
       </section>
 
@@ -131,7 +171,7 @@ export default function ManagementPageClient() {
         <div className="max-w-7xl mx-auto px-6 space-y-16">
           <div className="text-center max-w-2xl mx-auto space-y-4">
             <span className="text-[10px] uppercase tracking-[0.4em] text-ah-grey font-bold">COLLABORATION</span>
-            <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight font-syne">
+            <h2 className="ah-section-heading font-extrabold tracking-tight font-syne">
               Partnerships &amp; bookings
             </h2>
             <p className="text-sm text-ah-grey leading-relaxed font-light">
@@ -153,7 +193,7 @@ export default function ManagementPageClient() {
                   <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-ah-grey group-hover:bg-ah-red/10 group-hover:text-ah-red transition-all">
                     <Music className="w-4 h-4" />
                   </div>
-                  <h3 className="text-sm font-bold text-white">
+                  <h3 className="ah-card-heading-sm font-bold text-white font-syne">
                     {p.title}
                   </h3>
                   <p className="text-[11px] text-ah-grey leading-relaxed font-light">
@@ -202,7 +242,7 @@ export default function ManagementPageClient() {
                   </div>
 
                   <div className="space-y-3">
-                    <h3 className="text-xl md:text-2xl font-bold text-white font-syne">
+                    <h3 className="ah-card-heading font-bold text-white font-syne">
                       {card.title}
                     </h3>
                     <p className="text-xs text-ah-red font-mono tracking-wider font-semibold select-all">
@@ -244,7 +284,7 @@ export default function ManagementPageClient() {
             <span className="text-[10px] uppercase tracking-[0.4em] text-ah-rosa font-mono block font-bold">
               PRESS ASSETS
             </span>
-            <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight font-syne">
+            <h2 className="ah-section-heading font-extrabold tracking-tight font-syne">
               Official media kit
             </h2>
             <p className="text-xs md:text-sm text-ah-grey font-light leading-relaxed">
@@ -277,7 +317,7 @@ export default function ManagementPageClient() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-4xl md:text-7xl font-extrabold tracking-tight leading-none font-syne"
+            className="ah-banner-heading font-extrabold tracking-tight leading-none font-syne text-black"
           >
             Construct extraordinary experiences.
           </motion.h2>

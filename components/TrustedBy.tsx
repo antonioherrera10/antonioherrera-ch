@@ -9,16 +9,23 @@ export default function TrustedBy() {
         <p className="text-center text-[10px] uppercase tracking-[0.4em] text-ah-grey/60 mb-10">
           {CONTENT.partnersTitle}
         </p>
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-8 items-center justify-items-center">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-8 lg:gap-10 items-center justify-items-center">
           {PARTNER_LOGOS.map((partner, index) => {
-            if (partner.logoSrc) {
+            if (partner.logoUrl || partner.logoSrc) {
               return (
-                <div key={index} className="relative w-32 h-12 grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all duration-300">
+                <div
+                  key={index}
+                  className={`relative w-28 sm:w-32 md:w-36 h-10 sm:h-12 flex items-center justify-center grayscale hover:grayscale-0 opacity-70 hover:opacity-100 transition-all duration-300 ${
+                    partner.name === "ZZZ" ? "mix-blend-screen" : ""
+                  } ${partner.invert ? "invert" : ""}`}
+                  title={partner.name}
+                >
                   <CloudinaryImage
-                    folder="company-logos"
-                    filename={partner.logoSrc}
+                    src={partner.logoUrl}
+                    folder={partner.logoUrl ? undefined : "company-logos"}
+                    filename={partner.logoUrl ? undefined : partner.logoSrc}
                     alt={partner.name}
-                    className="object-contain"
+                    className="object-contain max-h-full max-w-full"
                     fill
                   />
                 </div>

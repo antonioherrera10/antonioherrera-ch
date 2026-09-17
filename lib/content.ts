@@ -118,14 +118,47 @@ export const TESTIMONIALS: Testimonial[] = [
 export interface PartnerLogo {
   name: string;
   logoSrc?: string;
+  logoUrl?: string;
+  invert?: boolean;
 }
 
 export const PARTNER_LOGOS: PartnerLogo[] = [
-  { name: "Zurich Performance Hall", logoSrc: "" },
-  { name: "HERR Design Collective", logoSrc: "" },
-  { name: "Boutique Group", logoSrc: "" },
-  { name: "Creative Europe", logoSrc: "" },
-  { name: "Swiss Art Alliance", logoSrc: "" }
+  {
+    name: "IKEA",
+    logoSrc: "ikea-logo.png",
+    logoUrl: "https://res.cloudinary.com/df6nnksd2/image/upload/v1779403089/ah/company-logos/ikea-logo.png"
+  },
+  {
+    name: "SRF",
+    logoSrc: "srf-logo.svg.png",
+    logoUrl: "https://res.cloudinary.com/df6nnksd2/image/upload/v1779443819/ah/company-logos/srf-logo.svg.png"
+  },
+  {
+    name: "ZHdK",
+    logoSrc: "ZHdK-Logo.png",
+    logoUrl: "https://res.cloudinary.com/df6nnksd2/image/upload/v1779445867/ah/company-logos/ZHdK-Logo.png"
+  },
+  {
+    name: "Swisscom",
+    logoSrc: "swisscom-logo.png",
+    logoUrl: "https://res.cloudinary.com/df6nnksd2/image/upload/v1779402663/ah/company-logos/swisscom-logo.png"
+  },
+  {
+    name: "ZZZ",
+    logoSrc: "ZZZ-Logo.webp",
+    logoUrl: "https://res.cloudinary.com/df6nnksd2/image/upload/v1779395175/ah/company-logos/ZZZ-Logo.webp"
+  },
+  {
+    name: "FIFA",
+    logoSrc: "FIFA-logo.png",
+    logoUrl: "https://res.cloudinary.com/df6nnksd2/image/upload/v1779404216/ah/company-logos/FIFA-logo.png"
+  },
+  {
+    name: "ZDW",
+    logoSrc: "ZDW_Logo_below15mm-height.png",
+    logoUrl: "https://res.cloudinary.com/df6nnksd2/image/upload/v1789566162/ZDW_Logo_below15mm-height.png",
+    invert: true
+  }
 ];
 
 export interface MusicProject {
@@ -166,7 +199,7 @@ export const MUSIC_PROJECTS: MusicProject[] = [
 
 export const CONTENT = {
   cta: "Schedule a consultation", // Global CTA text
-  heroTitle: "Design with purpose and resonance.",
+  heroTitle: "Discover your genuine happiness.",
   heroSub: "Transform your life into a profound experience by building genuine connections.",
   musicHeroTitle: "Connect through music",
   musicHeroSub: "Transform your events into joyous experiences that build genuine connections.",

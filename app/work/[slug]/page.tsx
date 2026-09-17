@@ -84,7 +84,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         <span className="text-xs uppercase tracking-[0.4em] text-brand-grey font-mono block">
           PROJECT CASE STUDY
         </span>
-        <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-white font-syne uppercase">
+        <h1 className="ah-hero-headline font-extrabold tracking-tight text-white font-syne">
           {project.title}
         </h1>
         <p className="text-xl md:text-2xl text-brand-grey leading-relaxed max-w-3xl">
@@ -191,13 +191,13 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         </Link>
       </section>
 
-      {/* 6. Final Red CTA Section */}
-      <section className="bg-brand-red py-32 text-brand-black text-center px-6 border-t border-white/10">
+      {/* 6. Final CTA Section */}
+      <section className="bg-[#0a0a0a] py-32 text-white text-center px-6 border-t border-white/10">
         <div className="max-w-4xl mx-auto space-y-8">
-          <h2 className="text-4xl md:text-6xl font-extrabold tracking-tight uppercase font-syne leading-tight">
+          <h2 className="ah-banner-heading font-extrabold tracking-tight font-syne leading-tight text-white">
             Interested in this framework?
           </h2>
-          <p className="text-sm md:text-base font-bold tracking-widest uppercase font-mono max-w-xl mx-auto opacity-80">
+          <p className="text-sm md:text-base font-medium tracking-normal font-mono max-w-xl mx-auto text-brand-grey">
             Let's design a high-performance system for your corporate operations.
           </p>
           <div className="pt-4">
@@ -205,7 +205,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               href={GOOGLE_CALENDAR_LINK}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-3 px-12 py-5 bg-brand-black text-white hover:bg-white hover:text-black transition-all duration-500 text-xs font-bold rounded-xl uppercase tracking-widest min-h-[44px] min-w-[44px]"
+              className="inline-flex items-center justify-center gap-3 px-12 py-5 bg-white text-black hover:bg-brand-grey hover:text-black transition-all duration-500 text-xs font-bold rounded-xl uppercase tracking-widest min-h-[44px] min-w-[44px]"
             >
               <span>{CONTENT.cta.toUpperCase()}</span>
               <Calendar className="w-4 h-4" />
