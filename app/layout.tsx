@@ -5,6 +5,7 @@ import "./globals.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import CustomCursor from "@/components/CustomCursor";
+import UnderConstructionBadge from "@/components/UnderConstructionBadge";
 import { SOCIAL_LINKS } from "@/lib/content";
 
 const syneFont = Syne({
@@ -70,6 +71,7 @@ export default function RootLayout({
         />
         <CustomCursor />
         <Nav />
+        <UnderConstructionBadge />
         {/* We add a padding-top here of pt-28/pt-20 to offset the fixed headers and stripes */}
         <main className="flex-grow pt-[105px] md:pt-[105px]">{children}</main>
         <Footer />

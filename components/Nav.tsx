@@ -119,15 +119,32 @@ export default function Nav() {
               Designer | Performing Artist
             </div>
 
-            <a
-              href={GOOGLE_CALENDAR_LINK}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => setIsMenuOpen(false)}
-              className="w-full py-4 bg-brand-white text-brand-black font-semibold text-center rounded-lg text-sm font-mono"
-            >
-              {CONTENT.cta}
-            </a>
+            <div className="flex flex-col gap-3 w-full">
+              <button
+                type="button"
+                onClick={() => {
+                  setIsMenuOpen(false);
+                  window.dispatchEvent(new CustomEvent("open-under-construction-modal"));
+                }}
+                className="w-full py-3 px-4 rounded-lg bg-brand-orange/10 border border-brand-orange/40 text-xs font-bold tracking-wider uppercase text-brand-orange flex items-center justify-center gap-2 hover:bg-brand-orange/20 active:bg-brand-orange/30 transition-colors"
+              >
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-orange opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-orange" />
+                </span>
+                <span>Website Under Construction &bull; Info</span>
+              </button>
+
+              <a
+                href={GOOGLE_CALENDAR_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setIsMenuOpen(false)}
+                className="w-full py-4 bg-brand-white text-brand-black font-semibold text-center rounded-lg text-sm font-mono"
+              >
+                {CONTENT.cta}
+              </a>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

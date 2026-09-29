@@ -1,4 +1,4 @@
-export const GOOGLE_CALENDAR_LINK = "https://calendar.app.google/antonioherrera";
+export const GOOGLE_CALENDAR_LINK = "https://calendar.app.google/chyLpmJ52xnhAmCi8";
 
 export const SOCIAL_LINKS = {
   instagram: "https://www.instagram.com/antonioherrera.mundus?igsh=cjVuaGV0emVwYnp4&utm_source=qr",
